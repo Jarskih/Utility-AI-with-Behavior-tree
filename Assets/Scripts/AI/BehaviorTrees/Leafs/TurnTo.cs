@@ -11,10 +11,10 @@ public class TurnTo : BehaviorTreeNode
         switch (turnTarget)
         {
             case TurnTarget.Enemy:
-                target = agent.Owner.blackboard.enemyTarget.transform;
+                target = agent.Owner.blackboard.enemyTarget?.transform;
                 break;
             case TurnTarget.Friendly:
-                target = agent.Owner.blackboard.friendlyTarget.transform;
+                target = agent.Owner.blackboard.friendlyTarget?.transform;
                 break;
         }
 

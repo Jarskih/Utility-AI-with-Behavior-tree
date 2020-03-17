@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace AI
 {
@@ -60,43 +61,83 @@ namespace AI
             _memory[Keys.HasFriendlyTarget] = _friendlyTarget != null;
             _memory[Keys.HasStamina] = stats.stamina > 10;
             _memory[Keys.HasMana] = stats.mana > 10;
-            _memory[Keys.LowMorale] = stats.morale <= 0;
             _memory[Keys.HasWeapon] = stats.hasWeapon;
             _memory[Keys.IsDead] = stats.health <= 0;
+            _memory[Keys.LowMorale] = stats.morale < 50;
         }
 
         private void SetTargets(Sense sense)
         {
+            var ownerPos = _owner.transform.position;
+
+            if (_enemyTarget?.IsActive() == false)
+            {
+                _enemyTarget = null;
+            }
+
+            if (_friendlyTarget?.IsActive() == false)
+            {
+                _friendlyTarget = null;
+            }
+            
             foreach (var unit in sense.units)
             {
                 if (unit == _owner) continue;
                 
                 if (unit.playerIndex == _owner.playerIndex)
                 {
-                    _friendlyTarget = unit;
+                    if (_friendlyTarget != null) continue;
+                    
+                    if (unit.IsActive())
+                    {
+                        if (_friendlyTarget == null)
+                        {
+                            _friendlyTarget = unit;
+                            continue;
+                        }
+
+                        // Enemy focuses always on closest target
+                        var distToNewUnit = unit.transform.position - ownerPos;
+                        var distToExistingTarget = _friendlyTarget.transform.position - ownerPos;
+                        if (distToNewUnit.sqrMagnitude < distToExistingTarget.sqrMagnitude)
+                        {
+                            _friendlyTarget = unit;
+                        }
+                    }
                 }
                 else
                 {
-                    _enemyTarget = unit;
+                    if (_enemyTarget != null) continue;
+                    
+                    if (unit.IsActive())
+                    {
+                        if (_enemyTarget == null)
+                        {
+                            _enemyTarget = unit;
+                            continue;
+                        }
+
+                        // Enemy focuses always on closest target
+                        var distToNewUnit = unit.transform.position - ownerPos;
+                        var distToExistingTarget = _enemyTarget.transform.position - ownerPos;
+                        if (distToNewUnit.sqrMagnitude < distToExistingTarget.sqrMagnitude)
+                        {
+                            _enemyTarget = unit;
+                        }
+                    }
                 }
             }
         }
 
-        private void CheckRange(Stats stats)
+        private void CheckRange(Stats pStats)
         {
-            if (_enemyTarget && Vector3.Distance(_owner.transform.position, _enemyTarget.transform.position) <
-                stats.attackRange)
+            if (_enemyTarget && (_owner.transform.position - _enemyTarget.transform.position).sqrMagnitude <
+                pStats.attackRange*pStats.attackRange)
             {
                 _memory[Keys.InRange] = true;
                 return;
             }
             _memory[Keys.InRange] = false;
-        }
-
-        private void OnDrawGizmos()
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawCube(_enemyTarget.GetPosition(), Vector3.one * 0.1f);
         }
     }
 }

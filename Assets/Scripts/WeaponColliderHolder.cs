@@ -1,14 +1,15 @@
 using System;
+using AI;
 using UnityEngine;
 
 public class WeaponColliderHolder : MonoBehaviour
 {
     private BoxCollider _collider;
     private Weapon _weapon;
-    private IDamageable _owner;
+    private AIBehavior _owner;
     private void Start()
     {
-        _owner = GetComponentInParent<IDamageable>();
+        _owner = GetComponentInParent<AIBehavior>();
         _weapon = GetComponentInParent<Weapon>();
         _collider = GetComponent<BoxCollider>();
     }
@@ -25,9 +26,10 @@ public class WeaponColliderHolder : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        var damageable = other.GetComponent<IDamageable>();
-        if (damageable == _owner) return;
-        
-        damageable?.Damaged(_weapon.damage);
+        var damageable = other.GetComponent<IDamageable>() as AIBehavior;
+        if (damageable?.playerIndex == _owner.playerIndex) return;
+
+        var damageEvent = new DamageEvent(_weapon.damage, damageable, _owner);
+        damageable?.Damaged(damageEvent);
     }
 }

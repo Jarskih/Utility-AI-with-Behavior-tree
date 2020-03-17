@@ -42,6 +42,11 @@ using UnityEngine;
 
         private bool PathIsWithinToleranceToTarget()
         {
-            return (agent.navAgent.pathEndPosition - agent.Owner.currentTarget.GetPosition()).sqrMagnitude < destinationTolerance * destinationTolerance;
+            var target = agent.Owner.blackboard.enemyTarget;
+            if (target)
+            {
+                return (agent.navAgent.pathEndPosition - target.GetPosition()).sqrMagnitude < destinationTolerance * destinationTolerance;
+            }
+            return true;
         }
     }

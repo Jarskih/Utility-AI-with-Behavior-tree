@@ -50,7 +50,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 1.5
+  m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -100,20 +100,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be759aceb26e4bb8bfd71d14912a678c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  behaviorTreeType: 0
+  behaviorTreeType: 2
   _currentTarget: {fileID: 0}
+  playerIndex: 1
   blackboard:
     _enemyTarget: {fileID: 0}
     _friendlyTarget: {fileID: 0}
   _stats:
     _health: 100
-    _maxHealth: 100
     _stamina: 100
-    _maxStamina: 100
     _mana: 100
-    _maxMana: 100
     _morale: 100
-    _maxMorale: 100
     _hasWeapon: 1
     _attackRange: 2
 --- !u!114 &7436613937750881423

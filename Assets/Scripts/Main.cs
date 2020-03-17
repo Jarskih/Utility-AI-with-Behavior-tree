@@ -5,16 +5,23 @@ using UnityEngine;
 
 public class Main : MonoBehaviour
 {
+    private EntityManager _entityManager;
     private BehaviorTreeManager _behaviorTreeManager;
-    private RuntimeBehaviourTree _runtimeBehaviourTree;
+    private List<RuntimeBehaviourTree> _runtimeBehaviourTree = new List<RuntimeBehaviourTree>();
     
-    void Start()
+    void Awake()
     {
-        _runtimeBehaviourTree = GetComponent<RuntimeBehaviourTree>();
-        _runtimeBehaviourTree.Init();
-        
+        foreach (var tree in GetComponents<RuntimeBehaviourTree>())
+        {
+            _runtimeBehaviourTree.Add(tree);
+            tree.Init();
+        }
+
         _behaviorTreeManager = gameObject.AddComponent<BehaviorTreeManager>();
         _behaviorTreeManager.Init();
+
+        _entityManager = gameObject.AddComponent<EntityManager>();
+        _entityManager.Init();
     }
     
     void Update()

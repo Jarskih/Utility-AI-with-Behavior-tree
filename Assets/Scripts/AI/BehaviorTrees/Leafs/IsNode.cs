@@ -21,8 +21,11 @@ using UnityEngine;
              case IsOp.Routing:
                  retVal = agent.Owner.blackboard.memory[AIBlackboard.Keys.LowMorale] == true ? BehaviorTreeResult.Success : BehaviorTreeResult.Failure;
                  break;
-             case IsOp.InRange:
+             case IsOp.InAttackRange:
                  retVal = agent.Owner.blackboard.memory[AIBlackboard.Keys.InRange] == true ? BehaviorTreeResult.Success : BehaviorTreeResult.Failure;
+                 break;
+             case IsOp.Dead:
+                 retVal = agent.Owner.blackboard.memory[AIBlackboard.Keys.IsDead] == true ? BehaviorTreeResult.Success : BehaviorTreeResult.Failure;
                  break;
          }
 

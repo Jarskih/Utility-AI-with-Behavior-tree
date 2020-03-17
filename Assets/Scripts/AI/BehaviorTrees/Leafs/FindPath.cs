@@ -16,13 +16,13 @@ public class FindPath : BehaviorTreeNode
     {
         switch (pathType)
         {
-            case PathType.TARGET:
+            case PathType.Target:
                 if (agent.Owner.currentTarget != null && !agent.navAgent.pathPending && agent.navAgent.enabled)
                 {
                     SetDestinationNearTarget(agent.Owner.currentTarget.GetPosition());
                 }
                 break;
-            case PathType.RANDOM:
+            case PathType.Random:
                 if (!agent.navAgent.pathPending && agent.navAgent.enabled)
                 {
                     SetRandomDestination(agent.navAgent);
@@ -40,12 +40,27 @@ public class FindPath : BehaviorTreeNode
                     SetDestinationNearTarget(agent.Owner.blackboard.friendlyTarget.GetPosition());
                 }
                 break;
+            case PathType.Retreat:
+                if (!agent.navAgent.pathPending && agent.navAgent.enabled)
+                {
+                    var destination = GetRetreatPos(agent);
+                    SetDestinationNearTarget(destination);
+                }
+                break;
             default:
                 break;
         }
 
         return agent.navAgent.hasPath || agent.navAgent.pathPending ? BehaviorTreeResult.Success : BehaviorTreeResult.Failure;
        
+    }
+
+    private Vector3 GetRetreatPos(BehaviorTreeAgent agent)
+    {
+        var agentPos = agent.Owner.GetPosition();
+        var retreatDir = agentPos - agent.Owner.blackboard.enemyTarget.GetPosition();
+        var retreatTarget = (retreatDir.normalized) * Random.Range(minWanderDistance, maxWanderDistance);
+        return retreatTarget;
     }
 
     private void SetRandomDestination(NavMeshAgent agent)
@@ -60,7 +75,7 @@ public class FindPath : BehaviorTreeNode
         }
     }
 
-    //Tries RepathCount times to find a path near the player, increasing the radius each time. 
+    //Tries Repath Count times to find a path near the player, increasing the radius each time. 
     //This is needed in case the player is not on valid Navmesh
     private void SetDestinationNearTarget(Vector3 pos)
     {

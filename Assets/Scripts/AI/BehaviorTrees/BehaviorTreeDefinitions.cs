@@ -7,6 +7,8 @@ namespace BehaviorTrees
     public static class AnimDefinitions
     {
         public static string ShouldAttack = "Attack";
+        public static string IsDead = "IsDead";
+        public static string AttackType = "AttackType";
         public const string MovementState = "MoveState";
     }
     
@@ -39,10 +41,11 @@ namespace BehaviorTrees
     
     public enum PathType
     {
-        TARGET,
-        RANDOM,
+        Target,
+        Random,
         EnemyTarget,
         FriendlyTarget,
+        Retreat
     }
     
     public enum HasOp
@@ -58,7 +61,9 @@ namespace BehaviorTrees
         Healthy,
         Wounded,
         Routing,
-        InRange
+        InAttackRange,
+        Dead
+        
     }
 
     public class CompositeAttribute : Node.CreateNodeMenuAttribute

@@ -10,7 +10,7 @@ namespace AI
     [RequireComponent(typeof(BehaviorTreeAgent))]
     public class AIBehavior : MonoBehaviour, IDamageable
     {
-        public BehaviourTreeType behaviorTreeType = BehaviourTreeType.Archer;
+        public BehaviourTreeType behaviorTreeType;
         public AIBehavior currentTarget => _currentTarget;
         
         [SerializeField] private AIBehavior _currentTarget;
@@ -24,6 +24,7 @@ namespace AI
         private NavMeshAgent _navMeshAgent;
         private BehaviorTreeManager _behaviorTreeManager;
         private BehaviorTreeAgent _agent;
+        private EntityManager _entityManager;
 
         // AI components
         public AIBlackboard blackboard;
@@ -36,21 +37,19 @@ namespace AI
             blackboard = new AIBlackboard(this);
         }
 
-        private void Awake()
+        private void Start()
         {
             _navMeshAgent = GetComponent<NavMeshAgent>();
             _animatorController = GetComponentInChildren<Animator>();
             _weapon = GetComponent<Weapon>();
+            _entityManager = FindObjectOfType<EntityManager>();
 
             _agent = new BehaviorTreeAgent(this, _animatorController, _navMeshAgent);
-        }
-
-        private void Start()
-        {
+            
             RuntimeBehaviourTreeData.RegisterAgentContext(behaviorTreeType, _agent);
             blackboard.Init();
             _sense.Init(transform);
-            _stats.Init();
+            _stats.Init(_entityManager, this);
         }
 
         private void Update()
@@ -70,9 +69,9 @@ namespace AI
             return transform.position;
         }
 
-        public void Damaged(int value)
+        public void Damaged(DamageEvent value)
         {
-            _stats.ReduceHealth(value);
+            _stats.ReduceHealth(value.damage);
         }
 
         public void ReduceMana(int value)

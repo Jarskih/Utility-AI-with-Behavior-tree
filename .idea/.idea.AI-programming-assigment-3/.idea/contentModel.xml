@@ -23,6 +23,7 @@
                 <e p="Root.cs" t="Include" />
                 <e p="Selector.cs" t="Include" />
                 <e p="Sequence.cs" t="Include" />
+                <e p="SubTree.cs" t="Include" />
               </e>
               <e p="Editor" t="Include">
                 <e p="BehaviorTreeNodeGUI.cs" t="Include" />
@@ -36,9 +37,12 @@
                 <e p="HasNode.cs" t="Include" />
                 <e p="IsNode.cs" t="Include" />
                 <e p="SetAttack.cs" t="Include" />
+                <e p="SetAttackType.cs" t="Include" />
+                <e p="SetDeadState.cs" t="Include" />
                 <e p="SetMoveState.cs" t="Include" />
                 <e p="SetSpeed.cs" t="Include" />
                 <e p="TurnTo.cs" t="Include" />
+                <e p="Wait.cs" t="Include" />
               </e>
               <e p="RuntimeBehaviorTree" t="Include">
                 <e p="RuntimeBehaviourTree.cs" t="Include" />
@@ -51,7 +55,10 @@
           <e p="Audio" t="Include">
             <e p="AudioSourcePool.cs" t="Include" />
             <e p="AudioSourcePoolManager.cs" t="Include" />
+            <e p="PollingPool.cs" t="Include" />
           </e>
+          <e p="DamageEvent.cs" t="Include" />
+          <e p="EntityManager.cs" t="Include" />
           <e p="Interfaces" t="Include">
             <e p="IDamageable.cs" t="Include" />
           </e>

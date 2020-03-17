@@ -28,10 +28,6 @@ public abstract class BehaviorTreeNode : Node
         {
             return BehaviorTreeResult.Failure;
         }
-        
-#if UNITY_EDITOR
-        agent.behaviourHistory.Add(nodeDescription == "" ? GetType().ToString() : nodeDescription);
-#endif //UNITY_EDITOR
         return Execute();
     }
 }

@@ -93,7 +93,7 @@ NavMeshAgent:
   m_Acceleration: 20
   avoidancePriority: 50
   m_AngularSpeed: 180
-  m_StoppingDistance: 19
+  m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -112,8 +112,8 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -145,20 +145,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   behaviorTreeType: 0
   _currentTarget: {fileID: 0}
+  playerIndex: 0
   blackboard:
     _enemyTarget: {fileID: 0}
     _friendlyTarget: {fileID: 0}
   _stats:
     _health: 100
-    _maxHealth: 100
     _stamina: 100
-    _maxStamina: 100
     _mana: 100
-    _maxMana: 100
     _morale: 100
-    _maxMorale: 100
     _hasWeapon: 1
-    _attackRange: 20
+    _attackRange: 10
 --- !u!114 &459650202610455190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,7 +168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a71b1554d6cf0a43a76aeaf089016b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weaponWeaponStats: {fileID: 11400000, guid: bfaf6727ae7253048bf6330d298a10b6, type: 2}
+  _weaponWeaponStats: {fileID: 11400000, guid: 5df67a821ce8ae0468829a806b3b19bb, type: 2}
 --- !u!1001 &534160774195329381
 PrefabInstance:
   m_ObjectHideFlags: 0

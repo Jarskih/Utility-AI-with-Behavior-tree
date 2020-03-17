@@ -1,29 +1,34 @@
 using System;
+using AI;
 using UnityEngine;
 
     [Serializable]
     public class Stats
     {
-        public int health => _health;
-        public int maxHealth => _maxHealth;
-        public int stamina => _stamina;
-        public int mana =>  _mana;
-        public int morale => _morale;
+        private EntityManager _entityManager;
+        private AIBehavior _aiBehavior;
+        
+        public float health => _health;
+        public float maxHealth => _maxHealth;
+        public float stamina => _stamina;
+        public float mana =>  _mana;
+        public float morale => _morale;
         public bool hasWeapon => _hasWeapon;
         public float attackRange => _attackRange;
 
-        [SerializeField]  private int _health;
-        [SerializeField]  private int _maxHealth;
-        [SerializeField]  private int _stamina;
-        [SerializeField]  private int _maxStamina;
-        [SerializeField]  private int _mana;
-        [SerializeField]  private int _maxMana;
-        [SerializeField]  private int _morale;
-        [SerializeField]  private int _maxMorale;
+        [SerializeField]  private float _health;
+        private readonly float _maxHealth;
+        [SerializeField]  private float _stamina;
+        private readonly float _maxStamina;
+        [SerializeField]  private float _mana;
+        private readonly float _maxMana;
+        [SerializeField]  private float _morale;
+        private readonly float _maxMorale;
         [SerializeField]  private bool _hasWeapon;
         [SerializeField] private float _attackRange;
         
         private float recoverySpeed = 1;
+        private float _closeDistance = 3;
 
         public Stats()
         {
@@ -39,20 +44,48 @@ using UnityEngine;
             _hasWeapon = true;
             _attackRange = 30;
         }
-        
-        public void Init()
+
+        public void Init(EntityManager entityManager, AIBehavior aiBehavior)
         {
+            _entityManager = entityManager;
+            _aiBehavior = aiBehavior;
         }
         
         public void Tick()
         {
+            UpdateMorale();
+            
             _stamina += (int)(Time.deltaTime * recoverySpeed);
-            _morale += (int)(Time.deltaTime * recoverySpeed);
+            _stamina = Mathf.Clamp(_stamina, 0, _maxStamina);
             _mana += (int)(Time.deltaTime * recoverySpeed);
+            _mana = Mathf.Clamp(_mana, 0, _maxMana);
+        }
+        
+        private void UpdateMorale()
+        {
+            var enemies = _entityManager.GetEnemyEntities(_aiBehavior.playerIndex);
+            int numberOfEnemiesNear = 0;
+            
+            foreach (var enemy in enemies)
+            {
+                if ((enemy.transform.position - _aiBehavior.transform.position).sqrMagnitude <
+                    _closeDistance * _closeDistance)
+                {
+                    numberOfEnemiesNear += 1;
+                }
+            }
 
-            _stamina = Mathf.Min(_stamina, _maxStamina);
-            _morale = Mathf.Min(_morale, _maxMorale);
-            _mana = Mathf.Min(_maxMana, _maxMorale);
+            if (numberOfEnemiesNear > 0)
+            {
+                var moraleLost = Mathf.Log(numberOfEnemiesNear);
+                _morale -= moraleLost;
+            }
+            else
+            {
+                _morale += Time.deltaTime * recoverySpeed;
+            }
+            
+            _morale = Mathf.Clamp(_morale, 0, _maxMorale);
         }
 
         public void ReduceHealth(int value)
