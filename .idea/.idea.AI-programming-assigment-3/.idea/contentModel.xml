@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Programming\AI-programming-assigment-3" t="IncludeRecursive">
+      <e p="AI-programming-assigment-3.sln" t="IncludeFlat" />
+      <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="Scripts" t="Include">
+          <e p="AI" t="Include">
+            <e p="AIBehavior.cs" t="Include" />
+            <e p="AIBlackboard.cs" t="Include" />
+            <e p="BehaviorTrees" t="Include">
+              <e p="Agent" t="Include">
+                <e p="BehaviorTreeAgent.cs" t="Include" />
+                <e p="BehaviorTreeAgentData.cs" t="Include" />
+              </e>
+              <e p="BehaviorTreeDefinitions.cs" t="Include" />
+              <e p="BehaviorTreeManager.cs" t="Include" />
+              <e p="Composites" t="Include">
+                <e p="Invert.cs" t="Include" />
+                <e p="ReturnSuccess.cs" t="Include" />
+                <e p="Root.cs" t="Include" />
+                <e p="Selector.cs" t="Include" />
+                <e p="Sequence.cs" t="Include" />
+              </e>
+              <e p="Editor" t="Include">
+                <e p="BehaviorTreeNodeGUI.cs" t="Include" />
+              </e>
+              <e p="Graph" t="Include">
+                <e p="BehaviorTreeGraph.cs" t="Include" />
+                <e p="BehaviorTreeNode.cs" t="Include" />
+              </e>
+              <e p="Leafs" t="Include">
+                <e p="FindPath.cs" t="Include" />
+                <e p="HasNode.cs" t="Include" />
+                <e p="IsNode.cs" t="Include" />
+                <e p="SetAttack.cs" t="Include" />
+                <e p="SetMoveState.cs" t="Include" />
+                <e p="SetSpeed.cs" t="Include" />
+                <e p="TurnTo.cs" t="Include" />
+              </e>
+              <e p="RuntimeBehaviorTree" t="Include">
+                <e p="RuntimeBehaviourTree.cs" t="Include" />
+                <e p="RuntimeBehaviourTreeData.cs" t="Include" />
+              </e>
+            </e>
+            <e p="Sense.cs" t="Include" />
+            <e p="Stats.cs" t="Include" />
+          </e>
+          <e p="Arrow.cs" t="Include" />
+          <e p="Interfaces" t="Include">
+            <e p="IDamageable.cs" t="Include" />
+          </e>
+          <e p="Main.cs" t="Include" />
+          <e p="SimpleCameraController.cs" t="Include" />
+          <e p="Weapon.cs" t="Include" />
+        </e>
+        <e p="Vendor" t="Include">
+          <e p="xNode" t="Include">
+            <e p="Scripts" t="Include">
+              <e p="Attributes" t="Include">
+                <e p="NodeEnum.cs" t="Include" />
+              </e>
+              <e p="Editor" t="Include">
+                <e p="Drawers" t="Include">
+                  <e p="NodeEnumDrawer.cs" t="Include" />
+                </e>
+                <e p="NodeEditor.cs" t="Include" />
+                <e p="NodeEditorAction.cs" t="Include" />
+                <e p="NodeEditorAssetModProcessor.cs" t="Include" />
+                <e p="NodeEditorBase.cs" t="Include" />
+                <e p="NodeEditorGUI.cs" t="Include" />
+                <e p="NodeEditorGUILayout.cs" t="Include" />
+                <e p="NodeEditorPreferences.cs" t="Include" />
+                <e p="NodeEditorReflection.cs" t="Include" />
+                <e p="NodeEditorResources.cs" t="Include" />
+                <e p="NodeEditorUtilities.cs" t="Include" />
+                <e p="NodeEditorWindow.cs" t="Include" />
+                <e p="NodeGraphEditor.cs" t="Include" />
+                <e p="RenamePopup.cs" t="Include" />
+                <e p="Resources" t="Include">
+                  <e p="ScriptTemplates" t="Include">
+                    <e p="xNode_NodeGraphTemplate.cs.txt" t="Include" />
+                    <e p="xNode_NodeTemplate.cs.txt" t="Include" />
+                  </e>
+                </e>
+              </e>
+              <e p="Node.cs" t="Include" />
+              <e p="NodeDataCache.cs" t="Include" />
+              <e p="NodeGraph.cs" t="Include" />
+              <e p="NodePort.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="Packages" t="ExcludeRecursive" />
+      <e p="Temp\bin" t="ExcludeRecursive" />
+    </e>
+    <e p="C:\Users\Jari\.Rider2019.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Jari\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_AI-programming-assigment-3.-1945799858.00" t="ExcludeRecursive" />
+  </component>
+</project>

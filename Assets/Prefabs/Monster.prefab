@@ -1,0 +1,171 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8574032968980417836
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8574032968980417843}
+  - component: {fileID: 8574032968980417842}
+  - component: {fileID: 8574032968980417837}
+  m_Layer: 0
+  m_Name: Monster
+  m_TagString: Unit
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8574032968980417843
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8574032968980417836}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.7869039, y: 0.36617294, z: 2.2699838}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7277018321671464115}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!195 &8574032968980417842
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8574032968980417836}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 6
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 1.5
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &8574032968980417837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8574032968980417836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be759aceb26e4bb8bfd71d14912a678c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  behaviorTreeType: 2
+  _currentTarget: {fileID: 0}
+  playerIndex: 1
+  blackboard:
+    _enemyTarget: {fileID: 0}
+    _friendlyTarget: {fileID: 0}
+  _stats:
+    _health: 100
+    _maxHealth: 100
+    _stamina: 100
+    _maxStamina: 100
+    _mana: 100
+    _maxMana: 100
+    _morale: 100
+    _maxMorale: 100
+    _hasWeapon: 1
+    _attackRange: 2
+--- !u!1001 &5451060728119576818
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 8574032968980417843}
+    m_Modifications:
+    - target: {fileID: 1801579053858954834, guid: 924f2e1436d58764583b803bef34ff20,
+        type: 3}
+      propertyPath: m_Name
+      value: warrok_w_kurniawan
+      objectReference: {fileID: 0}
+    - target: {fileID: 3412364308621487169, guid: 924f2e1436d58764583b803bef34ff20,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3412364308621487169, guid: 924f2e1436d58764583b803bef34ff20,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3412364308621487169, guid: 924f2e1436d58764583b803bef34ff20,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3412364308621487169, guid: 924f2e1436d58764583b803bef34ff20,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3412364308621487169, guid: 924f2e1436d58764583b803bef34ff20,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3412364308621487169, guid: 924f2e1436d58764583b803bef34ff20,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3412364308621487169, guid: 924f2e1436d58764583b803bef34ff20,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3412364308621487169, guid: 924f2e1436d58764583b803bef34ff20,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3412364308621487169, guid: 924f2e1436d58764583b803bef34ff20,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3412364308621487169, guid: 924f2e1436d58764583b803bef34ff20,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3412364308621487169, guid: 924f2e1436d58764583b803bef34ff20,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4742612031776899387, guid: 924f2e1436d58764583b803bef34ff20,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 4f375be4ac766124fb148f1174519c92, type: 2}
+    - target: {fileID: 4742612031776899387, guid: 924f2e1436d58764583b803bef34ff20,
+        type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 924f2e1436d58764583b803bef34ff20, type: 3}
+--- !u!4 &7277018321671464115 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3412364308621487169, guid: 924f2e1436d58764583b803bef34ff20,
+    type: 3}
+  m_PrefabInstance: {fileID: 5451060728119576818}
+  m_PrefabAsset: {fileID: 0}
