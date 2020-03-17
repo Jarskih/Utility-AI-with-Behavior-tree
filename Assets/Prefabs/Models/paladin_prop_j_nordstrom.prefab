@@ -70,6 +70,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8093819081382110321}
   - component: {fileID: 5009284325783051844}
+  - component: {fileID: 4607428692947914241}
   m_Layer: 0
   m_Name: Paladin_J_Nordstrom_Helmet
   m_TagString: Untagged
@@ -147,6 +148,20 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.00022089481, y: 0.27315086, z: 0.009640962}
     m_Extent: {x: 0.09390791, y: 0.12635857, z: 0.13169779}
   m_DirtyAABB: 0
+--- !u!64 &4607428692947914241
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 448144893909771956}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &614760557797400791
 GameObject:
   m_ObjectHideFlags: 0
@@ -527,6 +542,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3390362551794299309}
+  - component: {fileID: 8296172668573660490}
   m_Layer: 0
   m_Name: paladin_prop_j_nordstrom
   m_TagString: Untagged
@@ -553,6 +569,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &8296172668573660490
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1826109729855407038}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 89083c79337b13f4ca174a3ee60387dc, type: 3}
+  m_Controller: {fileID: 9100000, guid: f3c1e442529a95a45a553b8a6a6c1d4f, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1827750212814954352
 GameObject:
   m_ObjectHideFlags: 0
@@ -563,6 +598,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5356936667495660439}
   - component: {fileID: 7746192203739662752}
+  - component: {fileID: 4607428692947914242}
   m_Layer: 0
   m_Name: Paladin_J_Nordstrom
   m_TagString: Untagged
@@ -687,6 +723,20 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.0003617108, y: -0.093905896, z: -0.007408984}
     m_Extent: {x: 0.8525592, y: 0.8620174, z: 0.17210042}
   m_DirtyAABB: 0
+--- !u!64 &4607428692947914242
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1827750212814954352}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &1873845343349935743
 GameObject:
   m_ObjectHideFlags: 0
@@ -1700,6 +1750,63 @@ Transform:
   m_Father: {fileID: 2780896452172962463}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6473178129031211812
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2353481222091528288}
+  - component: {fileID: 4654491573813786539}
+  - component: {fileID: 3404582162910369495}
+  m_Layer: 0
+  m_Name: WeaponCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2353481222091528288
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6473178129031211812}
+  m_LocalRotation: {x: 0.022909371, y: 0.12192655, z: -0.0026813878, w: 0.9922711}
+  m_LocalPosition: {x: 0.21435803, y: -0.066632375, z: 0.4507293}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7563749619890863787}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 2.58, y: 14.01, z: 0}
+--- !u!65 &4654491573813786539
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6473178129031211812}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 0.06, z: 0.75}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3404582162910369495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6473178129031211812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad6ed6fdadc263c428a13c7b4ef0dd20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6525020287646727417
 GameObject:
   m_ObjectHideFlags: 0
@@ -1815,6 +1922,51 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.06104052, y: -0.006658852, z: 0.3036496}
     m_Extent: {x: 0.15018207, y: 0.045836862, z: 0.50709116}
   m_DirtyAABB: 0
+--- !u!1 &6857867332444592765
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5288924170315012473}
+  - component: {fileID: 4418165326006453516}
+  m_Layer: 0
+  m_Name: Shield
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5288924170315012473
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6857867332444592765}
+  m_LocalRotation: {x: 0.0005690281, y: -0.000000050291423, z: 0.0000000019954316,
+    w: 0.9999999}
+  m_LocalPosition: {x: 0.15704441, y: 0.05382502, z: 0.050865766}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6155373022443194229}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &4418165326006453516
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6857867332444592765}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.43, y: 0.05, z: 0.59}
+  m_Center: {x: -0.05, y: 0, z: -0.06}
 --- !u!1 &6995472885068449087
 GameObject:
   m_ObjectHideFlags: 0
@@ -1910,6 +2062,7 @@ Transform:
   - {fileID: 3409003465631072320}
   - {fileID: 2780896452172962463}
   - {fileID: 1441983534729591285}
+  - {fileID: 5288924170315012473}
   m_Father: {fileID: 9184991429005885811}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2040,6 +2193,7 @@ Transform:
   - {fileID: 130394247027855380}
   - {fileID: 5126156035218881641}
   - {fileID: 7647702696572854899}
+  - {fileID: 2353481222091528288}
   m_Father: {fileID: 3869581613926008546}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

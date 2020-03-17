@@ -1,3 +1,4 @@
+using System;
 using BehaviorTrees;
 using UnityEngine;
 using UnityEngine.AI;
@@ -15,6 +16,8 @@ namespace AI
         [SerializeField] private AIBehavior _currentTarget;
 
         public int playerIndex = 0;
+        private bool hasDied;
+        private ScriptableAction[] _deathActions;
 
         // Monobehaviors
         private Animator _animatorController;
@@ -26,6 +29,7 @@ namespace AI
         public AIBlackboard blackboard;
         [SerializeField] private Sense _sense = new Sense();
         [SerializeField] private Stats _stats = new Stats();
+        private Weapon _weapon;
 
         public AIBehavior()
         {
@@ -36,6 +40,7 @@ namespace AI
         {
             _navMeshAgent = GetComponent<NavMeshAgent>();
             _animatorController = GetComponentInChildren<Animator>();
+            _weapon = GetComponent<Weapon>();
 
             _agent = new BehaviorTreeAgent(this, _animatorController, _navMeshAgent);
         }
@@ -50,15 +55,11 @@ namespace AI
 
         private void Update()
         {
-            if (!IsActive())
-            {
-                return;
-            }
             _sense.Tick();
             _stats.Tick();
             blackboard.Tick(_sense, _stats);
         }
-        
+
         public bool IsActive()
         {
             return _stats.health > 0;
@@ -69,9 +70,26 @@ namespace AI
             return transform.position;
         }
 
-        public void Damaged()
+        public void Damaged(int value)
         {
-            
+            _stats.ReduceHealth(value);
+        }
+
+        public void ReduceMana(int value)
+        {
+            _stats.ReduceMana(value);
+        }
+        public void ReduceMorale(int value)
+        {
+            _stats.ReduceMorale(value);
+        }
+        
+        private void Die()
+        {
+            foreach (var action in _deathActions)
+            {
+                action.Execute(gameObject);
+            }
         }
     }
 }

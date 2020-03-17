@@ -54,4 +54,19 @@ using UnityEngine;
             _morale = Mathf.Min(_morale, _maxMorale);
             _mana = Mathf.Min(_maxMana, _maxMorale);
         }
+
+        public void ReduceHealth(int value)
+        {
+            _health -= value;
+        }
+
+        public void ReduceMana(int value)
+        {
+            _mana -= value;
+        }
+
+        public void ReduceMorale(int value)
+        {
+            _morale -= value;
+        }
     }

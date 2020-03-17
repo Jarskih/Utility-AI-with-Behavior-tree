@@ -2,6 +2,6 @@ namespace UnityEngine
 {
     public interface IDamageable
     {
-        void Damaged();
+        void Damaged(int value);
     }
 }

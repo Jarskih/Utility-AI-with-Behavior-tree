@@ -673,6 +673,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Monster
       objectReference: {fileID: 0}
+    - target: {fileID: 8574032968980417837, guid: 6c795201c281a284b86c418cc4b1a73f,
+        type: 3}
+      propertyPath: playerIndex
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8574032968980417843, guid: 6c795201c281a284b86c418cc4b1a73f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -681,7 +686,7 @@ PrefabInstance:
     - target: {fileID: 8574032968980417843, guid: 6c795201c281a284b86c418cc4b1a73f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.488
       objectReference: {fileID: 0}
     - target: {fileID: 8574032968980417843, guid: 6c795201c281a284b86c418cc4b1a73f,
         type: 3}
@@ -806,11 +811,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5225542484274028290, guid: 6435826d093e77a4aac80660e959cdcf,
-        type: 3}
-      propertyPath: _stats._attackRange
-      value: 20
+    - target: {fileID: 1554751589, guid: 6435826d093e77a4aac80660e959cdcf, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1554751589, guid: 6435826d093e77a4aac80660e959cdcf, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 459650202610455190, guid: 6435826d093e77a4aac80660e959cdcf,
+        type: 3}
+      propertyPath: _weaponWeaponStats
+      value: 
+      objectReference: {fileID: 11400000, guid: 5df67a821ce8ae0468829a806b3b19bb,
+        type: 2}
     - target: {fileID: 5225542484274028291, guid: 6435826d093e77a4aac80660e959cdcf,
         type: 3}
       propertyPath: m_Name
@@ -870,16 +884,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5225542484274028541, guid: 6435826d093e77a4aac80660e959cdcf,
-        type: 3}
-      propertyPath: m_Speed
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 5225542484274028541, guid: 6435826d093e77a4aac80660e959cdcf,
-        type: 3}
-      propertyPath: m_StoppingDistance
-      value: 19
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6435826d093e77a4aac80660e959cdcf, type: 3}

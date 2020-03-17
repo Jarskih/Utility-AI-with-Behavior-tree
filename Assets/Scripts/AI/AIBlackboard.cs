@@ -14,6 +14,9 @@ namespace AI
         public Dictionary<Keys, bool> memory => _memory;
         private Dictionary<Keys, bool> _memory;
 
+        public Dictionary<Keys, int> stats => _stats;
+        private Dictionary<Keys, int> _stats;
+
         private AIBehavior _owner;
        [SerializeField] private AIBehavior _enemyTarget;
        [SerializeField] private AIBehavior _friendlyTarget;
@@ -27,7 +30,12 @@ namespace AI
             LowMorale,
             HasWeapon,
             IsHurt,
-            InRange
+            InRange,
+            Health,
+            Stamina,
+            Mana,
+            Morale,
+            IsDead,
         }
         
         public AIBlackboard(AIBehavior owner)
@@ -36,6 +44,7 @@ namespace AI
             _enemyTarget = null;
             _friendlyTarget = null;
             _memory = new Dictionary<Keys, bool>();
+            _stats = new Dictionary<Keys, int>();
         }
         
         public void Init()
@@ -53,6 +62,7 @@ namespace AI
             _memory[Keys.HasMana] = stats.mana > 10;
             _memory[Keys.LowMorale] = stats.morale <= 0;
             _memory[Keys.HasWeapon] = stats.hasWeapon;
+            _memory[Keys.IsDead] = stats.health <= 0;
         }
 
         private void SetTargets(Sense sense)

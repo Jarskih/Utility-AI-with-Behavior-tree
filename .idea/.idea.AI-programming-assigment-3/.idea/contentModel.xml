@@ -48,13 +48,27 @@
             <e p="Sense.cs" t="Include" />
             <e p="Stats.cs" t="Include" />
           </e>
-          <e p="Arrow.cs" t="Include" />
+          <e p="Audio" t="Include">
+            <e p="AudioSourcePool.cs" t="Include" />
+            <e p="AudioSourcePoolManager.cs" t="Include" />
+          </e>
           <e p="Interfaces" t="Include">
             <e p="IDamageable.cs" t="Include" />
           </e>
           <e p="Main.cs" t="Include" />
+          <e p="Projectile.cs" t="Include" />
+          <e p="ProjectileSpawn.cs" t="Include" />
+          <e p="ScriptableObjects" t="Include">
+            <e p="Actions" t="Include">
+              <e p="PlaySound.cs" t="Include" />
+            </e>
+            <e p="AudioEvent.cs" t="Include" />
+            <e p="ScriptableAction.cs" t="Include" />
+            <e p="WeaponStats.cs" t="Include" />
+          </e>
           <e p="SimpleCameraController.cs" t="Include" />
           <e p="Weapon.cs" t="Include" />
+          <e p="WeaponColliderHolder.cs" t="Include" />
         </e>
         <e p="Vendor" t="Include">
           <e p="xNode" t="Include">
