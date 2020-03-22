@@ -15,8 +15,10 @@ namespace AI
         public Dictionary<Keys, bool> memory => _memory;
         private Dictionary<Keys, bool> _memory;
 
-        public Dictionary<Keys, int> stats => _stats;
-        private Dictionary<Keys, int> _stats;
+        public Dictionary<Keys, float> stats => _stats;
+        public Transform waypoint { get; set; }
+
+        private Dictionary<Keys, float> _stats;
 
         private AIBehavior _owner;
        [SerializeField] private AIBehavior _enemyTarget;
@@ -37,6 +39,7 @@ namespace AI
             Mana,
             Morale,
             IsDead,
+            Range
         }
         
         public AIBlackboard(AIBehavior owner)
@@ -45,25 +48,30 @@ namespace AI
             _enemyTarget = null;
             _friendlyTarget = null;
             _memory = new Dictionary<Keys, bool>();
-            _stats = new Dictionary<Keys, int>();
+            _stats = new Dictionary<Keys, float>();
         }
         
         public void Init()
         {
         }
 
-        public void Tick(Sense sense, Stats stats)
+        public void Update(Keys key, float value)
+        {
+            _stats[key] = value;
+        }
+
+        public void Update(Keys key, bool value)
+        {
+            _memory[key] = value;
+        }
+        public void Tick(Sense sense)
         {
             SetTargets(sense);
-            CheckRange(stats);
-            _memory[Keys.IsHurt] = stats.health < stats.maxHealth;
-            _memory[Keys.HasEnemyTarget] = _enemyTarget != null;
-            _memory[Keys.HasFriendlyTarget] = _friendlyTarget != null;
-            _memory[Keys.HasStamina] = stats.stamina > 10;
-            _memory[Keys.HasMana] = stats.mana > 10;
-            _memory[Keys.HasWeapon] = stats.hasWeapon;
-            _memory[Keys.IsDead] = stats.health <= 0;
-            _memory[Keys.LowMorale] = stats.morale < 50;
+            CheckRange();
+            
+            Update(AIBlackboard.Keys.HasEnemyTarget,  _enemyTarget != null);
+            Update(Keys.HasFriendlyTarget, _friendlyTarget != null);
+
         }
 
         private void SetTargets(Sense sense)
@@ -129,10 +137,10 @@ namespace AI
             }
         }
 
-        private void CheckRange(Stats pStats)
+        private void CheckRange()
         {
             if (_enemyTarget && (_owner.transform.position - _enemyTarget.transform.position).sqrMagnitude <
-                pStats.attackRange*pStats.attackRange)
+                _stats[Keys.Range]*_stats[Keys.Range])
             {
                 _memory[Keys.InRange] = true;
                 return;

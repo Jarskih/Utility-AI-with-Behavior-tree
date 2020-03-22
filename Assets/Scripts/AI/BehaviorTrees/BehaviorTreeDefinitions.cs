@@ -9,7 +9,8 @@ namespace BehaviorTrees
         public static string ShouldAttack = "Attack";
         public static string IsDead = "IsDead";
         public static string AttackType = "AttackType";
-        public const string MovementState = "MoveState";
+        public static string MovementState = "MoveState";
+        public static string Damaged = "Damaged";
     }
     
     public enum MovementState
@@ -22,7 +23,8 @@ namespace BehaviorTrees
     public enum TurnTarget
     {
         Enemy,
-        Friendly
+        Friendly,
+        Forward
     }
     
     public enum BehaviorTreeResult
@@ -51,9 +53,11 @@ namespace BehaviorTrees
     public enum HasOp
     {
         Path,
-        PathToTarget,
+        PathToWaypoint,
+        PathToFriendlyTarget,
         FriendlyTarget,
-        EnemyTarget
+        EnemyTarget,
+        PathToEnemyTarget
     }
 
     public enum IsOp

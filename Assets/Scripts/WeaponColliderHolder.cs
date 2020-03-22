@@ -2,14 +2,18 @@ using System;
 using AI;
 using UnityEngine;
 
+public delegate void OnDamageEvent(IEventSource source, IDamageable target);
 public class WeaponColliderHolder : MonoBehaviour
 {
+    public event OnDamageEvent damageEvent;
+    
     private BoxCollider _collider;
     private Weapon _weapon;
-    private AIBehavior _owner;
-    private void Start()
+    private IEventSource _source;
+
+    public void Init()
     {
-        _owner = GetComponentInParent<AIBehavior>();
+        _source = GetComponentInParent<IEventSource>();
         _weapon = GetComponentInParent<Weapon>();
         _collider = GetComponent<BoxCollider>();
     }
@@ -27,9 +31,12 @@ public class WeaponColliderHolder : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         var damageable = other.GetComponent<IDamageable>() as AIBehavior;
-        if (damageable?.playerIndex == _owner.playerIndex) return;
 
-        var damageEvent = new DamageEvent(_weapon.damage, damageable, _owner);
-        damageable?.Damaged(damageEvent);
+        if (_source != null)
+        {
+            if ((AIBehavior) _source == damageable) return;
+            
+            damageEvent?.Invoke(_source, damageable);  
+        }
     }
 }

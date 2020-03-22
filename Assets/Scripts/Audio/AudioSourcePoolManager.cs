@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class AudioSourcePoolManager : MonoBehaviour
 {
-    [SerializeField] private GameObject prefab;
-    [SerializeField] private AudioSourcePool _pool;
+    private GameObject prefab;
+    private AudioSourcePool _pool;
 
     void Start()
     {
+        prefab = new GameObject();
+        prefab.AddComponent<AudioSource>();
         _pool = new AudioSourcePool(prefab.GetComponent<AudioSource>());
     }
 

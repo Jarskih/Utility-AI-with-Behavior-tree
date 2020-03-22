@@ -11,4 +11,5 @@ public class WeaponStats : ScriptableObject
     public int damage;
     public WeaponType weaponType;
     public GameObject projectile;
+    public float projectileVelocity;
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using AI;
 using UnityEngine;
 
 public class Weapon : MonoBehaviour
@@ -8,30 +9,39 @@ public class Weapon : MonoBehaviour
     [SerializeField] WeaponStats _weaponWeaponStats;
     private WeaponColliderHolder _colliderHolder;
     private ProjectileSpawn _projectileSpawn;
-    public int damage => _weaponWeaponStats.damage;
+    private int damage => _weaponWeaponStats.damage;
 
-    void Init(string statsPath)
+    public void Init()
     {
         _projectileSpawn = GetComponentInChildren<ProjectileSpawn>();
         _colliderHolder = GetComponentInChildren<WeaponColliderHolder>();
-    }
-
-    public void Attack()
-    {
-        if (_weaponWeaponStats.weaponType == WeaponStats.WeaponType.Ranged)
+        if (_colliderHolder)
         {
-            var projectile = Instantiate(_weaponWeaponStats.projectile, _projectileSpawn.transform.position, _projectileSpawn.transform.rotation);
+            _colliderHolder.Init();
+            _colliderHolder.damageEvent += OnHit;
         }
     }
 
+    private void OnHit(IEventSource source, IDamageable target)
+    {
+        var damageEvent = new DamageEvent((AIBehavior)source, damage);
+        target?.Damaged(damageEvent);
+    }
+
+    public void RangedAttack()
+    {
+        if (_weaponWeaponStats.weaponType != WeaponStats.WeaponType.Ranged) return;
+        
+        var t = _projectileSpawn.transform;
+        var projectile = Instantiate(_weaponWeaponStats.projectile, t.position, t.rotation);
+        projectile.GetComponent<Rigidbody>().velocity = _weaponWeaponStats.projectileVelocity * projectile.transform.forward;
+    }
     public void Drop()
     {
-        
     }
 
     public void PickUp()
     {
-        
     }
 
     public void ActivateCollider()

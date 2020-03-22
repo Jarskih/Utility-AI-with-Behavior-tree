@@ -36,11 +36,13 @@
                 <e p="FindPath.cs" t="Include" />
                 <e p="HasNode.cs" t="Include" />
                 <e p="IsNode.cs" t="Include" />
+                <e p="RangedAttack.cs" t="Include" />
                 <e p="SetAttack.cs" t="Include" />
                 <e p="SetAttackType.cs" t="Include" />
                 <e p="SetDeadState.cs" t="Include" />
                 <e p="SetMoveState.cs" t="Include" />
                 <e p="SetSpeed.cs" t="Include" />
+                <e p="SetTrigger.cs" t="Include" />
                 <e p="TurnTo.cs" t="Include" />
                 <e p="Wait.cs" t="Include" />
               </e>
@@ -61,6 +63,7 @@
           <e p="EntityManager.cs" t="Include" />
           <e p="Interfaces" t="Include">
             <e p="IDamageable.cs" t="Include" />
+            <e p="IEventSource.cs" t="Include" />
           </e>
           <e p="Main.cs" t="Include" />
           <e p="Projectile.cs" t="Include" />

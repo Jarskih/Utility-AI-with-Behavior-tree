@@ -1,3 +1,4 @@
+using AI;
 using BehaviorTrees;
 using UnityEngine;
 
@@ -15,12 +16,42 @@ using UnityEngine;
                 case HasOp.Path:
                     result = agent.navAgent.hasPath ? BehaviorTreeResult.Success : BehaviorTreeResult.Failure;
                     break;
-                case HasOp.PathToTarget:
+                case HasOp.PathToWaypoint:
                     if (!agent.navAgent.enabled)
                     {
                         result = BehaviorTreeResult.Failure;
                     }
-                    else if (agent.navAgent.hasPath && PathIsWithinToleranceToTarget())
+                    else if (agent.navAgent.hasPath && PathIsWithinToleranceToTarget(agent.navAgent.destination))
+                    {
+                        result = BehaviorTreeResult.Success;
+                    }
+                    else
+                    {
+                        agent.navAgent.ResetPath();
+                        result = BehaviorTreeResult.Failure;
+                    }
+                    break;
+                case HasOp.PathToFriendlyTarget:
+                    if (!agent.navAgent.enabled)
+                    {
+                        result = BehaviorTreeResult.Failure;
+                    }
+                    else if (agent.navAgent.hasPath && PathIsWithinToleranceToTarget(agent.Owner.blackboard.friendlyTarget.transform))
+                    {
+                        result = BehaviorTreeResult.Success;
+                    }
+                    else
+                    {
+                        agent.navAgent.ResetPath();
+                        result = BehaviorTreeResult.Failure;
+                    }
+                    break;
+                case HasOp.PathToEnemyTarget:
+                    if (!agent.navAgent.enabled)
+                    {
+                        result = BehaviorTreeResult.Failure;
+                    }
+                    else if (agent.navAgent.hasPath && PathIsWithinToleranceToTarget(agent.Owner.blackboard.enemyTarget.transform))
                     {
                         result = BehaviorTreeResult.Success;
                     }
@@ -40,13 +71,17 @@ using UnityEngine;
             return result;
         }
 
-        private bool PathIsWithinToleranceToTarget()
+        private bool PathIsWithinToleranceToTarget(Transform target)
         {
-            var target = agent.Owner.blackboard.enemyTarget;
             if (target)
             {
-                return (agent.navAgent.pathEndPosition - target.GetPosition()).sqrMagnitude < destinationTolerance * destinationTolerance;
+                return (agent.navAgent.pathEndPosition - target.position).sqrMagnitude < destinationTolerance * destinationTolerance;
             }
             return true;
+        }
+        
+        private bool PathIsWithinToleranceToTarget(Vector3 target)
+        {
+            return (agent.navAgent.pathEndPosition - target).sqrMagnitude < destinationTolerance * destinationTolerance;
         }
     }

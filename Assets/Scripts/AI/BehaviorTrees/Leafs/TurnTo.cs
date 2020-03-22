@@ -7,6 +7,7 @@ public class TurnTo : BehaviorTreeNode
     public TurnTarget turnTarget;
     public override BehaviorTreeResult Execute()
     {
+        var result = BehaviorTreeResult.Failure;
         Transform target = null;
         switch (turnTarget)
         {
@@ -16,14 +17,19 @@ public class TurnTo : BehaviorTreeNode
             case TurnTarget.Friendly:
                 target = agent.Owner.blackboard.friendlyTarget?.transform;
                 break;
+            case TurnTarget.Forward:
+                agent.Owner.GetComponentInChildren<Animator>().transform.rotation = Quaternion.identity;
+                result = BehaviorTreeResult.Success;
+                break;
         }
 
         if (target)
         {
             var dir = target.position - agent.Owner.transform.position;
             agent.Owner.GetComponentInChildren<Animator>().transform.rotation = Quaternion.LookRotation(dir.normalized);
+            result = BehaviorTreeResult.Success;
         }
-       
-        return BehaviorTreeResult.Success;
+
+        return result;
     }
 }

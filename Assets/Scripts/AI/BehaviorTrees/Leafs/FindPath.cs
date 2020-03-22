@@ -55,12 +55,23 @@ public class FindPath : BehaviorTreeNode
        
     }
 
+    private Vector3 retreatTarget;
     private Vector3 GetRetreatPos(BehaviorTreeAgent agent)
     {
-        var agentPos = agent.Owner.GetPosition();
-        var retreatDir = agentPos - agent.Owner.blackboard.enemyTarget.GetPosition();
-        var retreatTarget = (retreatDir.normalized) * Random.Range(minWanderDistance, maxWanderDistance);
+        // Find position behind friendly unit
+        var enemyPos = agent.Owner.blackboard.enemyTarget.GetPosition();
+        var pos = agent.Owner.transform.position;
+       // var friendlyPos = agent.Owner.blackboard.friendlyTarget.GetPosition();
+        
+        // Retreat away from enemy
+        retreatTarget = (pos - enemyPos).normalized * Random.Range(minWanderDistance,maxWanderDistance) + pos;
         return retreatTarget;
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireCube(retreatTarget, Vector3.one);
     }
 
     private void SetRandomDestination(NavMeshAgent agent)

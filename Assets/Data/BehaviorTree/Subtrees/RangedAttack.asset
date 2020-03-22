@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8259132450189261203
+--- !u!114 &-7391335553122256923
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9,22 +9,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4f9ac80847e497a9427ca6de74a6034, type: 3}
-  m_Name: Sub Tree
+  m_Script: {fileID: 11500000, guid: 8b0021e469784cb7973e45ca6a2bc2f3, type: 3}
+  m_Name: Wait
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -72, y: 456}
+  position: {x: -440, y: 1416}
   ports:
     keys:
     - outResult
     values:
     - _fieldName: outResult
-      _node: {fileID: -8259132450189261203}
+      _node: {fileID: -7391335553122256923}
       _typeQualifiedName: BehaviorTrees.BehaviorTreeResult, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: inResults
-        node: {fileID: 627393371047046714}
+        node: {fileID: -2755801512296011850}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -34,8 +34,8 @@ MonoBehaviour:
   agent:
     animatorController: {fileID: 0}
   nodeDescription: 
-  subTree: {fileID: 11400000, guid: d291e15fcd65ca74199012d7b07a4bc6, type: 2}
---- !u!114 &-7399997992403194138
+  seconds: 2.9
+--- !u!114 &-3307432273110360749
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -44,22 +44,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4f9ac80847e497a9427ca6de74a6034, type: 3}
-  m_Name: Sub Tree
+  m_Script: {fileID: 11500000, guid: a0a35e311ea3401387e694b7ca0c4807, type: 3}
+  m_Name: Set Trigger
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -72, y: 296}
+  position: {x: -440, y: 1256}
   ports:
     keys:
     - outResult
     values:
     - _fieldName: outResult
-      _node: {fileID: -7399997992403194138}
+      _node: {fileID: -3307432273110360749}
       _typeQualifiedName: BehaviorTrees.BehaviorTreeResult, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: inResults
-        node: {fileID: 627393371047046714}
+        node: {fileID: -2755801512296011850}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -69,8 +69,8 @@ MonoBehaviour:
   agent:
     animatorController: {fileID: 0}
   nodeDescription: 
-  subTree: {fileID: 11400000, guid: a7ad13a59c265a942b31892bdeb1b3a5, type: 2}
---- !u!114 &-1827278322679229846
+  TriggerName: Attack
+--- !u!114 &-3006035193402163236
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -79,22 +79,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4f9ac80847e497a9427ca6de74a6034, type: 3}
-  m_Name: Sub Tree
+  m_Script: {fileID: 11500000, guid: c6dd6295a22e4087b64c48a39dcae11b, type: 3}
+  m_Name: Set Move State
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -72, y: 760}
+  position: {x: -440, y: 1080}
   ports:
     keys:
     - outResult
     values:
     - _fieldName: outResult
-      _node: {fileID: -1827278322679229846}
+      _node: {fileID: -3006035193402163236}
       _typeQualifiedName: BehaviorTrees.BehaviorTreeResult, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: inResults
-        node: {fileID: 627393371047046714}
+        node: {fileID: -2755801512296011850}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -103,9 +103,10 @@ MonoBehaviour:
   outResult: 0
   agent:
     animatorController: {fileID: 0}
-  nodeDescription: Move to Enemy
-  subTree: {fileID: 11400000, guid: 6419d87ba8adc794ab71f58692fe6be2, type: 2}
---- !u!114 &11400000
+  nodeDescription: 
+  desiredMoveState: 0
+  moveSpeed: 0
+--- !u!114 &-2755801512296011850
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -114,72 +115,51 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2b00d7fb518e1549a18dd47a7d288d9, type: 3}
-  m_Name: Archer
-  m_EditorClassIdentifier: 
-  nodes:
-  - {fileID: 4181852731781398557}
-  - {fileID: 627393371047046714}
-  - {fileID: 1989372448039465125}
-  - {fileID: 3154150582875339169}
-  - {fileID: -1827278322679229846}
-  - {fileID: -7399997992403194138}
-  - {fileID: -8259132450189261203}
-  - {fileID: 8492338281576473827}
---- !u!114 &627393371047046714
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 656d3be857772764db97b33e0f57edda, type: 3}
-  m_Name: Selector
+  m_Script: {fileID: 11500000, guid: 8e47e69bbcd112b43b8f7a151862583a, type: 3}
+  m_Name: Sequence
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 280, y: 712}
+  position: {x: -120, y: 952}
   ports:
     keys:
     - inResults
     - outResult
     values:
     - _fieldName: inResults
-      _node: {fileID: 627393371047046714}
+      _node: {fileID: -2755801512296011850}
       _typeQualifiedName: System.Collections.Generic.List`1[[BehaviorTrees.BehaviorTreeResult,
         Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
         mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
       connections:
       - fieldName: outResult
-        node: {fileID: -7399997992403194138}
+        node: {fileID: 7712850387599689053}
         reroutePoints: []
       - fieldName: outResult
-        node: {fileID: -8259132450189261203}
+        node: {fileID: 8937873379833061390}
         reroutePoints: []
       - fieldName: outResult
-        node: {fileID: 1989372448039465125}
+        node: {fileID: -3006035193402163236}
         reroutePoints: []
       - fieldName: outResult
-        node: {fileID: -1827278322679229846}
+        node: {fileID: -3307432273110360749}
         reroutePoints: []
       - fieldName: outResult
-        node: {fileID: 3154150582875339169}
+        node: {fileID: -7391335553122256923}
         reroutePoints: []
       - fieldName: outResult
-        node: {fileID: 8492338281576473827}
+        node: {fileID: -1607656948357044951}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
     - _fieldName: outResult
-      _node: {fileID: 627393371047046714}
+      _node: {fileID: -2755801512296011850}
       _typeQualifiedName: BehaviorTrees.BehaviorTreeResult, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: inResult
-        node: {fileID: 4181852731781398557}
+        node: {fileID: -1229338345806226813}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -188,9 +168,9 @@ MonoBehaviour:
   outResult: 0
   agent:
     animatorController: {fileID: 0}
-  nodeDescription: Select action
+  nodeDescription: 
   inResults: 
---- !u!114 &1989372448039465125
+--- !u!114 &-1607656948357044951
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -199,22 +179,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4f9ac80847e497a9427ca6de74a6034, type: 3}
-  m_Name: Sub Tree
+  m_Script: {fileID: 11500000, guid: 3edb836e372b4b448ffc569a5b7b67c3, type: 3}
+  m_Name: Ranged Attack
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -72, y: 616}
+  position: {x: -440, y: 1592}
   ports:
     keys:
     - outResult
     values:
     - _fieldName: outResult
-      _node: {fileID: 1989372448039465125}
+      _node: {fileID: -1607656948357044951}
       _typeQualifiedName: BehaviorTrees.BehaviorTreeResult, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: inResults
-        node: {fileID: 627393371047046714}
+        node: {fileID: -2755801512296011850}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -223,44 +203,8 @@ MonoBehaviour:
   outResult: 0
   agent:
     animatorController: {fileID: 0}
-  nodeDescription: AttackEnemy
-  subTree: {fileID: 11400000, guid: de1b181e5beda2446ab4a28e8b37e848, type: 2}
---- !u!114 &3154150582875339169
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4f9ac80847e497a9427ca6de74a6034, type: 3}
-  m_Name: Sub Tree
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: -72, y: 920}
-  ports:
-    keys:
-    - outResult
-    values:
-    - _fieldName: outResult
-      _node: {fileID: 3154150582875339169}
-      _typeQualifiedName: BehaviorTrees.BehaviorTreeResult, Assembly-CSharp, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-      connections:
-      - fieldName: inResults
-        node: {fileID: 627393371047046714}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  outResult: 0
-  agent:
-    animatorController: {fileID: 0}
-  nodeDescription: Find Path to Enemy
-  subTree: {fileID: 11400000, guid: 5a55957b241058849a48ca2370f90b5c, type: 2}
---- !u!114 &4181852731781398557
+  nodeDescription: 
+--- !u!114 &-1229338345806226813
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -273,26 +217,26 @@ MonoBehaviour:
   m_Name: Root
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 552, y: 728}
+  position: {x: 150.63649, y: 953.90674}
   ports:
     keys:
     - inResult
     - outResult
     values:
     - _fieldName: inResult
-      _node: {fileID: 4181852731781398557}
+      _node: {fileID: -1229338345806226813}
       _typeQualifiedName: BehaviorTreeNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       connections:
       - fieldName: outResult
-        node: {fileID: 627393371047046714}
+        node: {fileID: -2755801512296011850}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
     - _fieldName: outResult
-      _node: {fileID: 4181852731781398557}
+      _node: {fileID: -1229338345806226813}
       _typeQualifiedName: BehaviorTrees.BehaviorTreeResult, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
       connections: []
@@ -303,9 +247,9 @@ MonoBehaviour:
   outResult: 0
   agent:
     animatorController: {fileID: 0}
-  nodeDescription: Attack
+  nodeDescription: 
   inResult: {fileID: 0}
---- !u!114 &8492338281576473827
+--- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -314,22 +258,43 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4f9ac80847e497a9427ca6de74a6034, type: 3}
-  m_Name: Sub Tree
+  m_Script: {fileID: 11500000, guid: c2b00d7fb518e1549a18dd47a7d288d9, type: 3}
+  m_Name: RangedAttack
+  m_EditorClassIdentifier: 
+  nodes:
+  - {fileID: -1229338345806226813}
+  - {fileID: -2755801512296011850}
+  - {fileID: -1607656948357044951}
+  - {fileID: 8937873379833061390}
+  - {fileID: 7712850387599689053}
+  - {fileID: -3006035193402163236}
+  - {fileID: -7391335553122256923}
+  - {fileID: -3307432273110360749}
+--- !u!114 &7712850387599689053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8eb30f037f542818c37aa80560d1ee4, type: 3}
+  m_Name: Is
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -72, y: 1096}
+  position: {x: -440, y: 792}
   ports:
     keys:
     - outResult
     values:
     - _fieldName: outResult
-      _node: {fileID: 8492338281576473827}
+      _node: {fileID: 7712850387599689053}
       _typeQualifiedName: BehaviorTrees.BehaviorTreeResult, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: inResults
-        node: {fileID: 627393371047046714}
+        node: {fileID: -2755801512296011850}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -339,4 +304,39 @@ MonoBehaviour:
   agent:
     animatorController: {fileID: 0}
   nodeDescription: 
-  subTree: {fileID: 11400000, guid: ae696f48d97590041a05d22216520197, type: 2}
+  isOperation: 3
+--- !u!114 &8937873379833061390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8100a670851d49a19543a566e9d9e270, type: 3}
+  m_Name: Turn To
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -440, y: 936}
+  ports:
+    keys:
+    - outResult
+    values:
+    - _fieldName: outResult
+      _node: {fileID: 8937873379833061390}
+      _typeQualifiedName: BehaviorTrees.BehaviorTreeResult, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: inResults
+        node: {fileID: -2755801512296011850}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  outResult: 0
+  agent:
+    animatorController: {fileID: 0}
+  nodeDescription: 
+  turnTarget: 0

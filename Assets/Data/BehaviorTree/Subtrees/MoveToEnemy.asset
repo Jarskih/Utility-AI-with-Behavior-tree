@@ -99,7 +99,7 @@ MonoBehaviour:
   agent:
     animatorController: {fileID: 0}
   nodeDescription: 
-  operation: 1
+  operation: 5
   destinationTolerance: 1
 --- !u!114 &3689490220099563540
 MonoBehaviour:

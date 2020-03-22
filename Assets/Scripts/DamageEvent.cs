@@ -1,15 +1,14 @@
 using AI;
+using UnityEngine;
 
 public struct DamageEvent
 {
     public int damage;
     public AIBehavior attacker;
-    public AIBehavior defender;
 
-    public DamageEvent(int damage, AIBehavior attacker, AIBehavior defender)
+    public DamageEvent(AIBehavior source, int damage)
     {
         this.damage = damage;
-        this.attacker = attacker;
-        this.defender = defender;
+        attacker = source;
     }
 }

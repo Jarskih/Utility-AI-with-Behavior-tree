@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Main : MonoBehaviour
 {
+    private AudioSourcePoolManager _audioSourcePoolManager;
     private EntityManager _entityManager;
     private BehaviorTreeManager _behaviorTreeManager;
     private List<RuntimeBehaviourTree> _runtimeBehaviourTree = new List<RuntimeBehaviourTree>();
@@ -22,6 +23,8 @@ public class Main : MonoBehaviour
 
         _entityManager = gameObject.AddComponent<EntityManager>();
         _entityManager.Init();
+
+        _audioSourcePoolManager = gameObject.AddComponent<AudioSourcePoolManager>();
     }
     
     void Update()
