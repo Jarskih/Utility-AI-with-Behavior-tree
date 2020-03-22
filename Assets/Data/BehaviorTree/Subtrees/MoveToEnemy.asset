@@ -78,7 +78,7 @@ MonoBehaviour:
   m_Name: Has
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -312, y: 40}
+  position: {x: -328, y: 40}
   ports:
     keys:
     - outResult
@@ -278,6 +278,7 @@ MonoBehaviour:
   nodeDescription: 
   desiredMoveState: 1
   moveSpeed: 2
+  overrideSpeed: 1
 --- !u!114 &8876079874551302027
 MonoBehaviour:
   m_ObjectHideFlags: 0

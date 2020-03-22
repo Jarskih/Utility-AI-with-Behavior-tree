@@ -1,6 +1,6 @@
-using System;
-using BehaviorTrees;
 using UnityEngine;
+using System.Collections;
+using BehaviorTrees;
 using UnityEngine.AI;
 
 namespace AI
@@ -15,7 +15,8 @@ namespace AI
         public int playerIndex => _playerIndex;
         public AIBehavior currentTarget => _currentTarget;
         public Weapon weapon => _weapon;
-       
+        public Stats stats => _stats;
+
         private AIBehavior _currentTarget;
         [SerializeField] private int _playerIndex;
         private bool hasDied;

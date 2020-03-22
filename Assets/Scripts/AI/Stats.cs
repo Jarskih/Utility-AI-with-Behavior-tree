@@ -16,6 +16,7 @@ public class Stats
     public float morale => _morale;
     public bool hasWeapon => _hasWeapon;
     public float attackRange => _attackRange;
+    public float moveSpeed => _moveSpeed;
 
     [SerializeField]  private float _health;
     private readonly float _maxHealth;
@@ -25,8 +26,9 @@ public class Stats
     private readonly float _maxMana;
     [SerializeField]  private float _morale;
     private readonly float _maxMorale;
-    [SerializeField]  private bool _hasWeapon;
+    [SerializeField] private bool _hasWeapon;
     [SerializeField] private float _attackRange;
+    [SerializeField] private float _moveSpeed;
     
     private float recoverySpeed = 1;
     private float _closeDistance = 3;
@@ -57,9 +59,10 @@ public class Stats
     {
         UpdateMorale();
         
-        _stamina += (int)(Time.deltaTime * recoverySpeed);
+        _stamina += Time.deltaTime * recoverySpeed;
+        _mana += Time.deltaTime * recoverySpeed;
+        
         _stamina = Mathf.Clamp(_stamina, 0, _maxStamina);
-        _mana += (int)(Time.deltaTime * recoverySpeed);
         _mana = Mathf.Clamp(_mana, 0, _maxMana);
         
         _blackboard.Update(AIBlackboard.Keys.Mana, _mana);
@@ -67,13 +70,13 @@ public class Stats
         _blackboard.Update(AIBlackboard.Keys.Morale, _morale);
         _blackboard.Update(AIBlackboard.Keys.Range, _attackRange);
 
-        _blackboard.Update(AIBlackboard.Keys.IsHurt, _health < _maxHealth);
+        _blackboard.Update(AIBlackboard.Keys.IsHurt, _health < _maxHealth/2);
         _blackboard.Update(AIBlackboard.Keys.HasFriendlyTarget, _attackRange);
         _blackboard.Update(AIBlackboard.Keys.HasStamina, _stamina > 10);
         _blackboard.Update(AIBlackboard.Keys.HasMana, _mana > 10);
         _blackboard.Update(AIBlackboard.Keys.HasWeapon, _hasWeapon);
         _blackboard.Update(AIBlackboard.Keys.IsDead, _health <= 0);
-        _blackboard.Update(AIBlackboard.Keys.LowMorale, _morale < 50);
+        _blackboard.Update(AIBlackboard.Keys.LowMorale, _morale < 20);
     }
     
     private void UpdateMorale()

@@ -1,7 +1,10 @@
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.UIElements;
 using XNodeEditor;
 
 /*
+
 namespace BehaviorTrees.Editor
 {
     [CustomNodeEditor(typeof(BehaviorTreeNode))]
@@ -9,22 +12,15 @@ namespace BehaviorTrees.Editor
     {
         public override void OnHeaderGUI()
         {
+            GUI.color = Color.white;
             BehaviorTreeNode node = target as BehaviorTreeNode;
+            BehaviorTreeGraph graph = node.graph as BehaviorTreeGraph;
             if (node.outResult == BehaviorTreeResult.Success) GUI.color = Color.green;
-            if (node.outResult == BehaviorTreeResult.Failure) GUI.color = Color.red;
-            if (node.outResult == BehaviorTreeResult.Running) GUI.color = Color.yellow;
-            
             string title = target.name;
             GUILayout.Label(title, NodeEditorResources.styles.nodeHeader, GUILayout.Height(30));
             GUI.color = Color.white;
         }
-
-        public override void OnBodyGUI()
-        {
-            base.OnBodyGUI();
-            BehaviorTreeNode node = target as BehaviorTreeNode;
-            BehaviorTreeGraph graph = node.graph as BehaviorTreeGraph;
-        }
     }
 }
+
 */
