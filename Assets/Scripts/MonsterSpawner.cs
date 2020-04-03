@@ -13,8 +13,8 @@
 
         private FloatVariable _monstersLeftUI;
         private FloatVariable _timerUI;
-        private int _monstersLeft = 10;
-        private float _cooldown = 10f;
+        private int _monstersLeft = 15;
+        private float _cooldown = 5f;
         private float _timer = 0f;
         public void Init(GameObject prefab, AIEventSystem eventSystem, EntityManager entityManager)
         {
@@ -67,5 +67,10 @@
                 ai.Init(_eventSystem);
                 _entityManager.AddEntity(ai);
             }
+        }
+
+        public int GetMonstersLeft()
+        {
+            return _monstersLeft;
         }
     }

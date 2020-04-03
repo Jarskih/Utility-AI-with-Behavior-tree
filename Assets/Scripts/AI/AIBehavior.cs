@@ -45,7 +45,7 @@ namespace AI
         public AIEventSystem eventSystem;
         private Sense _sense = new Sense();
         private Stats _stats = new Stats();
-        private UtilityFunctions _utility = new UtilityFunctions();
+        [SerializeField] private UtilityFunctions _utility = new UtilityFunctions();
 
         // AI decision limiter
         private float counter = 1;
@@ -230,7 +230,7 @@ namespace AI
         {
             if (Vector3.Distance(_currentWaypoint.transform.position, transform.position) < 2)
             {
-                _currentWaypoint =  _waypoints.GetNextWayPoint(_currentWaypoint.index+1);
+                _currentWaypoint =  _waypoints.GetNextWayPoint(_currentWaypoint.index);
             }
             return _currentWaypoint.transform.position;
         }

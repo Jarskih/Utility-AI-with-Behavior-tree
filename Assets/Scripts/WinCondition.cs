@@ -8,9 +8,11 @@ public class WinCondition
     private GameObject _loseUI;
     private GameObject _wonUI;
     private Waypoints _waypoints;
-
-    public void Init(EntityManager _entityManager)
+    private MonsterSpawner _monsterSpawner;
+    
+    public void Init(EntityManager _entityManager, MonsterSpawner monsterSpawner)
     {
+        _monsterSpawner = monsterSpawner;
         _waypoints = GameObject.FindObjectOfType<Waypoints>();
         _heroes = _entityManager.GetFriendlyEntities(0);
         _loseUI = GameObject.FindObjectOfType<LoseUI>().gameObject;
@@ -22,6 +24,12 @@ public class WinCondition
 
     public void Tick()
     {
+        if (_monsterSpawner.GetMonstersLeft() <= 0)
+        {
+            GameLost();
+            return;
+        }
+        
         foreach (var hero in _heroes)
         {
             if (Vector3.Distance(_waypoints.GetLastWaypoint().transform.position, hero.transform.position) < 5)

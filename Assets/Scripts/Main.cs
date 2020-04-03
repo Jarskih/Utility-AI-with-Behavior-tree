@@ -52,7 +52,7 @@ public class Main : MonoBehaviour
         }
         
         _winCondition = new WinCondition();
-        _winCondition.Init(_entityManager);
+        _winCondition.Init(_entityManager, _monsterSpawner);
     }
     
     void Update()
