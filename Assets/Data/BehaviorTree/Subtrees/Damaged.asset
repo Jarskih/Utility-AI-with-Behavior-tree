@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Wait
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -648, y: 408}
+  position: {x: -648, y: 424}
   ports:
     keys:
     - outResult

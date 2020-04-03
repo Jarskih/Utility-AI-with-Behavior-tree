@@ -15,8 +15,8 @@ MonoBehaviour:
   maxHealth: 100
   maxMana: 100
   healing: 100
-  healingCost: 50
+  healingCost: 90
   tauntCost: 0
   attackRange: 20
-  recoverySpeed: 5
-  sensingDistance: 20
+  recoverySpeed: 10
+  sensingDistance: 30

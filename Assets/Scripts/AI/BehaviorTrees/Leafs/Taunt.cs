@@ -12,6 +12,7 @@ public class Taunt : BehaviorTreeNode
         {
             agent.Owner.Taunt();
             agent.animatorController.SetTrigger(AnimDefinitions.ShouldTaunt);
+            agent.Owner.ReduceMana(agent.Owner.stats.TauntCost);
             return BehaviorTreeResult.Success;
         }
         return BehaviorTreeResult.Failure;

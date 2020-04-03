@@ -17,6 +17,7 @@ public class Main : MonoBehaviour
     private List<RuntimeBehaviourTree> _runtimeBehaviourTree = new List<RuntimeBehaviourTree>();
     private AIEventSystem _aiEventSystem;
     private MonsterSpawner _monsterSpawner;
+    private WinCondition _winCondition;
     
     private List<AIBehavior> _entities = new List<AIBehavior>();
 
@@ -32,7 +33,7 @@ public class Main : MonoBehaviour
             tree.Init();
         }
 
-
+        _audioSourcePoolManager = gameObject.AddComponent<AudioSourcePoolManager>();
         _aiEventSystem = GetComponent<AIEventSystem>();
         _aiEventSystem.stimData = Resources.Load<AIStimData>("EventData/AIStimData");
         
@@ -49,8 +50,9 @@ public class Main : MonoBehaviour
         {
             entity.Init(_aiEventSystem);
         }
-
-        _audioSourcePoolManager = gameObject.AddComponent<AudioSourcePoolManager>();
+        
+        _winCondition = new WinCondition();
+        _winCondition.Init(_entityManager);
     }
     
     void Update()
@@ -61,5 +63,7 @@ public class Main : MonoBehaviour
         {
             entity.Tick();
         }
+
+        _winCondition.Tick();
     }
 }

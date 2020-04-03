@@ -148,6 +148,7 @@ MonoBehaviour:
   - {fileID: 100000, guid: aec54d7a991d7b644b145d550a4b7831, type: 3}
   - {fileID: 100000, guid: 14987c031123b98408a165a8bf1288d4, type: 3}
   - {fileID: 100000, guid: 43dd1ba2a5dde844eb01240da13ab96b, type: 3}
+  _hurtSound: {fileID: 11400000, guid: d7eaddaaac77f254dbeb69451349c4f7, type: 2}
   blackboard:
     _enemyTarget: {fileID: 0}
     _friendlyTarget: {fileID: 0}

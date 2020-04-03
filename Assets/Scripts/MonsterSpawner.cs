@@ -1,4 +1,5 @@
     using System.Runtime.InteropServices;
+    using System.Runtime.Versioning;
     using AI;
     using AI.Events;
     using UnityEngine;
@@ -7,26 +8,51 @@
     {
         private GameObject _monsterPrefab;
         private static Camera _cam;
-        private static readonly RaycastHit[] _results = new RaycastHit[10];
         private AIEventSystem _eventSystem;
         private EntityManager _entityManager;
 
-        public MonsterSpawner()
-        {
-        }
+        private FloatVariable _monstersLeftUI;
+        private FloatVariable _timerUI;
+        private int _monstersLeft = 10;
+        private float _cooldown = 10f;
+        private float _timer = 0f;
         public void Init(GameObject prefab, AIEventSystem eventSystem, EntityManager entityManager)
         {
             _cam = Camera.main;
             _monsterPrefab = prefab;
             _eventSystem = eventSystem;
             _entityManager = entityManager;
+
+            _monstersLeftUI = Resources.Load<FloatVariable>("UI/MonstersLeft");
+            _timerUI = Resources.Load<FloatVariable>("UI/MonsterCooldown");
+            if (_monstersLeftUI == null || _timerUI == null)
+            {
+                Debug.LogError("No asset file found");
+            }
         }
         
         public void Tick()
         {
+            _timer += Time.deltaTime;
+            
+            _timerUI.Value = _timer;
+            _monstersLeftUI.Value = _monstersLeft;
+
+            if (_timer < _cooldown)
+            {
+                return;
+            }
+
+            if (_monstersLeft <= 0)
+            {
+                return;
+            }
+            
             if (Input.GetMouseButtonUp(0))
             {
-                Spawn();  
+                Spawn();
+                _timer = 0;
+                _monstersLeft--;
             }
         }
 

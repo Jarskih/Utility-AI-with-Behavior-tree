@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Sequence
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -472, y: -24}
+  position: {x: -424, y: -24}
   ports:
     keys:
     - inResults

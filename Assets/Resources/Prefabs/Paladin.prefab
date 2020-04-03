@@ -84,7 +84,7 @@ NavMeshAgent:
   m_Acceleration: 20
   avoidancePriority: 50
   m_AngularSpeed: 180
-  m_StoppingDistance: 1
+  m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 0
   m_AutoRepath: 1
@@ -145,6 +145,7 @@ MonoBehaviour:
   - {fileID: 100000, guid: aec54d7a991d7b644b145d550a4b7831, type: 3}
   - {fileID: 100000, guid: 14987c031123b98408a165a8bf1288d4, type: 3}
   - {fileID: 100000, guid: 43dd1ba2a5dde844eb01240da13ab96b, type: 3}
+  _hurtSound: {fileID: 11400000, guid: 952c2600ecd46674cb6c8dd3507cc556, type: 2}
   blackboard:
     _enemyTarget: {fileID: 0}
     _friendlyTarget: {fileID: 0}
@@ -269,6 +270,8 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
+  UIhealth: {fileID: 11400000, guid: dc35ccd6c0797a743a3d994587fc18b1, type: 2}
+  UImana: {fileID: 11400000, guid: d347a6fe2c4b44c499267d896aca0015, type: 2}
   retreatTarget: {x: 0, y: 0, z: 0}
 --- !u!114 &1712721928
 MonoBehaviour:
@@ -430,7 +433,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.5
+      scalar: 1
       minScalar: 5
       maxCurve:
         serializedVersion: 2

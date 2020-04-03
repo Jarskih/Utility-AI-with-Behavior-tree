@@ -156,6 +156,7 @@ MonoBehaviour:
   - {fileID: 100000, guid: aec54d7a991d7b644b145d550a4b7831, type: 3}
   - {fileID: 100000, guid: 14987c031123b98408a165a8bf1288d4, type: 3}
   - {fileID: 100000, guid: 43dd1ba2a5dde844eb01240da13ab96b, type: 3}
+  _hurtSound: {fileID: 11400000, guid: a735685ed4a06c942bfc05b23c3a1b67, type: 2}
   blackboard:
     _enemyTarget: {fileID: 0}
     _friendlyTarget: {fileID: 0}
@@ -271,6 +272,8 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
+  UIhealth: {fileID: 11400000, guid: 2b5651e013c187a4a9c06fac0b280ebf, type: 2}
+  UImana: {fileID: 11400000, guid: 4baa5f6cca60cec4aade99a55b6fee42, type: 2}
   retreatTarget: {x: 0, y: 0, z: 0}
 --- !u!114 &459650202610455190
 MonoBehaviour:
@@ -432,7 +435,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.5
+      scalar: 1
       minScalar: 5
       maxCurve:
         serializedVersion: 2

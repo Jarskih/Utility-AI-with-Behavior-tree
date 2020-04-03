@@ -39,6 +39,7 @@
                 <e p="HasNode.cs" t="Include" />
                 <e p="Heal.cs" t="Include" />
                 <e p="IsNode.cs" t="Include" />
+                <e p="PlaySoundNode.cs" t="Include" />
                 <e p="RangedAttack.cs" t="Include" />
                 <e p="SetAttack.cs" t="Include" />
                 <e p="SetAttackType.cs" t="Include" />
@@ -84,23 +85,29 @@
             <e p="IEventSource.cs" t="Include" />
             <e p="IHealable.cs" t="Include" />
           </e>
+          <e p="LoseUI.cs" t="Include" />
           <e p="Main.cs" t="Include" />
           <e p="MonsterSpawner.cs" t="Include" />
           <e p="Projectile.cs" t="Include" />
           <e p="ProjectileSpawn.cs" t="Include" />
           <e p="ScriptableObjects" t="Include">
-            <e p="Actions" t="Include">
-              <e p="PlaySound.cs" t="Include" />
-            </e>
             <e p="AIStimData.cs" t="Include" />
             <e p="AudioEvent.cs" t="Include" />
+            <e p="FloatVariable.cs" t="Include" />
             <e p="ScriptableAction.cs" t="Include" />
+            <e p="SimpleAudioEvent.cs" t="Include" />
+            <e p="SliderSetter.cs" t="Include" />
+            <e p="TextSetter.cs" t="Include" />
             <e p="UnitStats.cs" t="Include" />
             <e p="WeaponStats.cs" t="Include" />
           </e>
           <e p="SimpleCameraController.cs" t="Include" />
+          <e p="Waypoint.cs" t="Include" />
+          <e p="Waypoints.cs" t="Include" />
           <e p="Weapon.cs" t="Include" />
           <e p="WeaponColliderHolder.cs" t="Include" />
+          <e p="WinCondition.cs" t="Include" />
+          <e p="WinUI.cs" t="Include" />
         </e>
         <e p="Vendor" t="Include">
           <e p="Blood decal pack" t="Include">
@@ -113,6 +120,34 @@
                   <e p="ThirdPartyNotices.txt" t="Include" />
                 </e>
               </e>
+            </e>
+          </e>
+          <e p="TextMesh Pro" t="Include">
+            <e p="Fonts" t="Include">
+              <e p="LiberationSans - OFL.txt" t="Include" />
+            </e>
+            <e p="Resources" t="Include">
+              <e p="LineBreaking Following Characters.txt" t="Include" />
+              <e p="LineBreaking Leading Characters.txt" t="Include" />
+              <e p="Shaders" t="Include">
+                <e p="TMP_Bitmap-Custom-Atlas.shader" t="Include" />
+                <e p="TMP_Bitmap-Mobile.shader" t="Include" />
+                <e p="TMP_Bitmap.shader" t="Include" />
+                <e p="TMP_SDF Overlay.shader" t="Include" />
+                <e p="TMP_SDF-Mobile Masking.shader" t="Include" />
+                <e p="TMP_SDF-Mobile Overlay.shader" t="Include" />
+                <e p="TMP_SDF-Mobile.shader" t="Include" />
+                <e p="TMP_SDF-Surface-Mobile.shader" t="Include" />
+                <e p="TMP_SDF-Surface.shader" t="Include" />
+                <e p="TMP_SDF.shader" t="Include" />
+                <e p="TMP_Sprite.shader" t="Include" />
+                <e p="TMPro.cginc" t="Include" />
+                <e p="TMPro_Properties.cginc" t="Include" />
+                <e p="TMPro_Surface.cginc" t="Include" />
+              </e>
+            </e>
+            <e p="Sprites" t="Include">
+              <e p="EmojiOne Attribution.txt" t="Include" />
             </e>
           </e>
           <e p="xNode" t="Include">

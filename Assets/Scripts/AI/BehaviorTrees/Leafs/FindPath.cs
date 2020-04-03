@@ -16,6 +16,12 @@ public class FindPath : BehaviorTreeNode
     {
         switch (pathType)
         {
+            case PathType.Waypoint:
+                if (!agent.navAgent.pathPending && agent.navAgent.enabled)
+                {
+                    agent.navAgent.SetDestination(agent.Owner.GetWaypoint());
+                }
+                break;
             case PathType.Random:
                 if (!agent.navAgent.pathPending && agent.navAgent.enabled)
                 {

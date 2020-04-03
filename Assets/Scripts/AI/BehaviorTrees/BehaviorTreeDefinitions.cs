@@ -50,7 +50,8 @@ namespace BehaviorTrees
         Random,
         EnemyTarget,
         FriendlyTarget,
-        Retreat
+        Retreat,
+        Waypoint
     }
     
     public enum HasOp

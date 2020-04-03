@@ -21,12 +21,10 @@ namespace AI
         private UtilityFunctions _utility;
         private AIBehavior _owner;
         
-       [SerializeField] private AIBehavior _enemyTarget;
-       [SerializeField] private AIBehavior _friendlyTarget;
+        private AIBehavior _enemyTarget;
+        private AIBehavior _friendlyTarget;
 
-       // For debug
-       [SerializeField] private float _health;
-       [SerializeField] private float _mana;
+       private float _maxDist = 10;
 
        public enum Keys
         {
@@ -36,7 +34,6 @@ namespace AI
             IsHurt,
             InRange,
             Health,
-            Stamina,
             Mana,
             IsDead,
             Range,
@@ -60,14 +57,10 @@ namespace AI
         }
         public void Tick(Sense sense)
         {
-            _health = _stats[Keys.Health];
-            _mana = _stats[Keys.Mana];
-            
             // Update blackboard
             SetTargets(sense);
             QueryFriendsForTargets(sense);
             
-
             if (_friendlyTarget)
             {
                 UpdateBlackBoard(Keys.FriendHealth, _friendlyTarget.blackboard.GetStatValue(Keys.Health));
@@ -89,19 +82,19 @@ namespace AI
         }
         private float CalculateEnemyDistToFriend()
         {
-            if (friendlyTarget == null || _owner.blackboard._enemyTarget == null) return 10; // Use max distance if no enemy target or friendly target
+            if (friendlyTarget == null || _owner.blackboard._enemyTarget == null) return _maxDist; // Use max distance (10) if no enemy target or friendly target
 
             var dist = Vector3.Distance(friendlyTarget.transform.position , _owner.blackboard._enemyTarget.transform.position);
-            Mathf.Clamp(dist, 0, 10);
+            Mathf.Clamp(dist, 0, _maxDist);
             return dist;
         }
 
         private float CalculateEnemyDist()
         {
-            if (enemyTarget == null) return 10; // Use max distance if no enemy target
+            if (enemyTarget == null) return _maxDist; // Use max distance if no enemy target
 
             var dist = Vector3.Distance(enemyTarget.transform.position , _owner.transform.position);
-            Mathf.Clamp(dist, 0, 10);
+            Mathf.Clamp(dist, 0, _maxDist);
             return dist;
         }
 
@@ -215,6 +208,7 @@ namespace AI
             }
         }
         
+        // Share information about enemies with friendly units
         private void QueryFriendsForTargets(Sense sense)
         {
             if (enemyTarget != null) return;
@@ -238,6 +232,7 @@ namespace AI
         }
 
 
+        // Determine if unit is within vision range
         private bool CheckRange()
         {
             var range = GetStatValue(Keys.Range);

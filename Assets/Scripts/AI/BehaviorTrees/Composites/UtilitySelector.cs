@@ -25,13 +25,13 @@ public class UtilitySelector : BehaviorTreeNode
         // Sort in descending order
         list.Sort((a, b) => b.Value.CompareTo(a.Value));
         
-        if (agent.Owner.name == "Archer")
-        {
-            foreach (var l in list)
-            {
-                Debug.Log("Key: " + l.Key + " " + " " + l.Value);
-            }
-        }
+     //   if (agent.Owner.name == "Archer")
+     //   {
+     //       foreach (var l in list)
+     //       {
+     //           Debug.Log("Key: " + l.Key + " " + " " + l.Value);
+     //       }
+     //   }
         
         for (int i = 0; i < list.Count; i++)
         {

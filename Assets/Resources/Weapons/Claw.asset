@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28e5de623feeedd4b84f70b6acce5c94, type: 3}
   m_Name: Claw
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 20
   weaponType: 0
   projectile: {fileID: 0}
   projectileVelocity: 0

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Has
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -1112, y: 8}
+  position: {x: -1112, y: -8}
   ports:
     keys:
     - outResult
@@ -35,7 +35,7 @@ MonoBehaviour:
     animatorController: {fileID: 0}
   nodeDescription: 
   operation: 1
-  destinationTolerance: 0.1
+  destinationTolerance: 1
 --- !u!114 &-2715943075739426135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,6 +123,42 @@ MonoBehaviour:
   repathCount: 10
   minWanderDistance: 10
   maxWanderDistance: 10
+--- !u!114 &-524194624604660722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78824c0496f74ceb91d285ed78690f43, type: 3}
+  m_Name: Has
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -328, y: -120}
+  ports:
+    keys:
+    - outResult
+    values:
+    - _fieldName: outResult
+      _node: {fileID: -524194624604660722}
+      _typeQualifiedName: BehaviorTrees.BehaviorTreeResult, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: inResults
+        node: {fileID: 9010080343237613974}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  outResult: 0
+  agent:
+    animatorController: {fileID: 0}
+  nodeDescription: 
+  operation: 4
+  destinationTolerance: 1
 --- !u!114 &-84019394216930008
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,6 +219,8 @@ MonoBehaviour:
   - {fileID: -2715943075739426135}
   - {fileID: -84019394216930008}
   - {fileID: 3948048751734145382}
+  - {fileID: 9010080343237613974}
+  - {fileID: -524194624604660722}
 --- !u!114 &2375000355847525476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -260,8 +298,8 @@ MonoBehaviour:
       _typeQualifiedName: BehaviorTrees.BehaviorTreeResult, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
       connections:
-      - fieldName: inResult
-        node: {fileID: 3670160377408874763}
+      - fieldName: inResults
+        node: {fileID: 9010080343237613974}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -285,7 +323,7 @@ MonoBehaviour:
   m_Name: Root
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 40, y: 24}
+  position: {x: 264, y: 24}
   ports:
     keys:
     - inResult
@@ -297,7 +335,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: outResult
-        node: {fileID: 3082205702624708712}
+        node: {fileID: 9010080343237613974}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -417,7 +455,7 @@ MonoBehaviour:
   m_Name: Sequence
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -776, y: 24}
+  position: {x: -776, y: 8}
   ports:
     keys:
     - inResults
@@ -449,6 +487,58 @@ MonoBehaviour:
       connections:
       - fieldName: inResults
         node: {fileID: 3082205702624708712}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  outResult: 0
+  agent:
+    animatorController: {fileID: 0}
+  nodeDescription: 
+  inResults: 
+--- !u!114 &9010080343237613974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e47e69bbcd112b43b8f7a151862583a, type: 3}
+  m_Name: Sequence
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -8, y: 8}
+  ports:
+    keys:
+    - inResults
+    - outResult
+    values:
+    - _fieldName: inResults
+      _node: {fileID: 9010080343237613974}
+      _typeQualifiedName: System.Collections.Generic.List`1[[BehaviorTrees.BehaviorTreeResult,
+        Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
+        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: outResult
+        node: {fileID: -524194624604660722}
+        reroutePoints: []
+      - fieldName: outResult
+        node: {fileID: 3082205702624708712}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: outResult
+      _node: {fileID: 9010080343237613974}
+      _typeQualifiedName: BehaviorTrees.BehaviorTreeResult, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: inResult
+        node: {fileID: 3670160377408874763}
         reroutePoints: []
       _direction: 1
       _connectionType: 0

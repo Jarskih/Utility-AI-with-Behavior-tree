@@ -8,23 +8,25 @@ public class Heal : BehaviorTreeNode
     public override BehaviorTreeResult Execute()
     {
         var blackboard = agent.Owner.blackboard;
+        var owner = agent.Owner;
 
-        if (agent.Owner.HasMana(agent.Owner.stats.HealingCost))
+        if (agent.Owner.blackboard.GetStatValue(AIBlackboard.Keys.Mana) < agent.Owner.stats.HealingCost)
         {
             return BehaviorTreeResult.Failure;
         }
-        
-        if (blackboard.GetStatValue(AIBlackboard.Keys.FriendHealth) < blackboard.friendlyTarget.stats.maxHealth)
-        {
-            agent.animatorController.SetTrigger(AnimDefinitions.ShouldHeal);
-            agent.Owner.Heal(blackboard.friendlyTarget, agent.Owner.stats.Healing);
-            return BehaviorTreeResult.Success;
-        }
 
-        if (blackboard.GetStatValue(AIBlackboard.Keys.Health) < agent.Owner.stats.maxHealth)
+        // Only heal when anyone in party is not in full health
+        if (blackboard.GetStatValue(AIBlackboard.Keys.Health) < agent.Owner.stats.maxHealth ||
+            blackboard.friendlyTarget && blackboard.friendlyTarget.blackboard.GetStatValue(AIBlackboard.Keys.Health) <
+            blackboard.friendlyTarget.stats.maxHealth)
         {
             agent.animatorController.SetTrigger(AnimDefinitions.ShouldHeal);
-            agent.Owner.Heal(agent.Owner, agent.Owner.stats.Healing);
+            if (blackboard.friendlyTarget)
+            {
+                owner.Heal(blackboard.friendlyTarget, owner.stats.Healing);
+            }
+            owner.Heal(owner, owner.stats.Healing);
+            owner.ReduceMana(owner.stats.HealingCost);
             return BehaviorTreeResult.Success;
         }
 

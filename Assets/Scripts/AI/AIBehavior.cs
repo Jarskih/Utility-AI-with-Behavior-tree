@@ -5,6 +5,7 @@ using AI.Events;
 using BehaviorTrees;
 using UnityEngine.AI;
 using UnityEngine.Rendering;
+using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
 
 namespace AI
@@ -14,6 +15,7 @@ namespace AI
     [RequireComponent(typeof(BehaviorTreeAgent))]
     public class AIBehavior : MonoBehaviour, IDamageable, IEventSource, IHealable
     {
+        // What type of AI this is (behavior tree it uses)
         public BehaviourTreeType behaviorTreeType;
         public int playerIndex => _playerIndex;
         public Weapon weapon => _weapon;
@@ -21,9 +23,9 @@ namespace AI
         public UtilityFunctions utility => _utility;
 
         [SerializeField] private int _playerIndex;
-        private bool hasDied;
         [SerializeField] private UnitStats unitStats;
         [SerializeField] GameObject[] bloodArray;
+        [SerializeField] AudioEvent _hurtSound;
 
         // Monobehaviors
         private Animator _animatorController;
@@ -36,25 +38,34 @@ namespace AI
         private ParticleSystem _blood;
         private ParticleSystem _healParticleSystem;
         private CapsuleCollider _capsuleCollider;
+        private Waypoints _waypoints;
 
         // AI components
         public AIBlackboard blackboard;
         public AIEventSystem eventSystem;
-        [SerializeField] private Sense _sense = new Sense();
-        [SerializeField] private Stats _stats = new Stats();
-        [SerializeField] private UtilityFunctions _utility = new UtilityFunctions();
-        private bool _init;
+        private Sense _sense = new Sense();
+        private Stats _stats = new Stats();
+        private UtilityFunctions _utility = new UtilityFunctions();
 
         // AI decision limiter
         private float counter = 1;
         private float updateTime = 0.2f;
         
+        // UI
+        public FloatVariable UIhealth;
+        public FloatVariable UImana;
+        
         private WaitForSeconds waitFor = new WaitForSeconds(0.2f);
         private UtilityFunctions.Decisions _currentDecision;
+        private Waypoint _currentWaypoint;
+        private bool _init;
+        private bool hasDied;
 
         public void Init(AIEventSystem eventSystem)
         {
             blackboard = new AIBlackboard(this, _utility);
+            
+            // Listen for events from other AI agents
             this.eventSystem = eventSystem;
             this.eventSystem.AIEvent += OnEvent;
             
@@ -66,6 +77,9 @@ namespace AI
             _blood = GetComponentInChildren<BloodParticles>().GetComponent<ParticleSystem>();
             _healParticleSystem = GetComponent<ParticleSystem>();
             _capsuleCollider = GetComponent<CapsuleCollider>();
+
+            _waypoints = FindObjectOfType<Waypoints>();
+            _currentWaypoint = _waypoints.GetFirstWaypoint();
 
             _weapon = GetComponent<Weapon>();
 
@@ -98,6 +112,14 @@ namespace AI
                 _sense.Tick();
                 blackboard.Tick(_sense);
                 counter = 0;
+            }
+            
+            
+            // Update UI
+            if (UIhealth && UImana)
+            {
+                UIhealth.Value = blackboard.GetStatValue(AIBlackboard.Keys.Health);
+                UImana.Value = blackboard.GetStatValue(AIBlackboard.Keys.Mana);
             }
         }
         
@@ -138,6 +160,7 @@ namespace AI
             blackboard.UpdateBlackBoard(AIBlackboard.Keys.Health, -damageEvent.damage);
             StartCoroutine(PlayAndStopParticleSystem(_blood));
             Instantiate(GetRandomBlood(), transform.position, Quaternion.identity);
+            _audioSourcePoolManager.PlayAudioEvent(_hurtSound);
             
             // Set new target when attacked
             if (blackboard.enemyTarget == null) {
@@ -171,28 +194,26 @@ namespace AI
         public void Heal(AIBehavior friendlyTarget, int value)
         {
             friendlyTarget.Healed(value);
-            ReduceMana(stats.HealingCost);
         }
         
         public void Taunt()
         {
             eventSystem.TriggerEvent( this, null, AIEventType.Taunt);
-            ReduceMana(stats.TauntCost);
         }
-        
-        private void Healed(int heal)
-        {
-            blackboard.UpdateBlackBoard(AIBlackboard.Keys.Health, heal);
-            StartCoroutine(PlayAndStopParticleSystem(_healParticleSystem));
-        }
-        
-        private void ReduceMana(int value)
+
+        public void ReduceMana(int value)
         {
             blackboard.UpdateBlackBoard(AIBlackboard.Keys.Mana, -value);
         }
 
-        #endregion
-
+        private void Healed(int heal)
+        {
+            var health = blackboard.GetStatValue(AIBlackboard.Keys.Health) + heal;
+            health = Mathf.Clamp(health, 0, stats.maxHealth);
+            blackboard.SetBlackboardValue(AIBlackboard.Keys.Health, health);
+            StartCoroutine(PlayAndStopParticleSystem(_healParticleSystem));
+        }
+        
         public bool HasMana(float cost)
         {
             var manaLeft = blackboard.GetStatValue(AIBlackboard.Keys.Mana);
@@ -201,6 +222,17 @@ namespace AI
                 return false;
             }
             return true;
+        }
+        
+        #endregion
+
+        public Vector3 GetWaypoint()
+        {
+            if (Vector3.Distance(_currentWaypoint.transform.position, transform.position) < 2)
+            {
+                _currentWaypoint =  _waypoints.GetNextWayPoint(_currentWaypoint.index+1);
+            }
+            return _currentWaypoint.transform.position;
         }
 
         #region Debug
@@ -235,6 +267,16 @@ namespace AI
             Gizmos.color = Color.blue;
             Gizmos.DrawWireCube(retreatTarget, Vector3.one);
         }
+
+        private void OnDrawGizmosSelected()
+        {
+            if (_currentWaypoint == null) return;
+            Gizmos.color = Color.white;
+            Gizmos.DrawLine(transform.position, _currentWaypoint.transform.position);
+        }
+
         #endregion
+
+
     }
 }

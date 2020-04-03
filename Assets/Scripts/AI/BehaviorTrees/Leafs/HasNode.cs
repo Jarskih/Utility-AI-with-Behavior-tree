@@ -21,13 +21,12 @@ using UnityEngine;
                     {
                         result = BehaviorTreeResult.Failure;
                     }
-                    else if (agent.navAgent.hasPath && PathIsWithinToleranceToTarget(agent.navAgent.destination))
+                    else if (agent.navAgent.hasPath)
                     {
                         result = BehaviorTreeResult.Success;
                     }
                     else
                     {
-                        agent.navAgent.ResetPath();
                         result = BehaviorTreeResult.Failure;
                     }
                     break;
