@@ -7,7 +7,7 @@ using AI;
 
 public class Projectile : MonoBehaviour
 {
-    private int _damage;
+    private WeaponStats _weaponStats;
     private AIBehavior _owner;
 
     private void OnCollisionEnter(Collision other)
@@ -16,8 +16,14 @@ public class Projectile : MonoBehaviour
 
         if (enemy == null) return;
         
-        var damageEvent = new DamageEvent(_owner, _damage);
+        var damageEvent = new DamageEvent(_owner, _weaponStats.damage);
         enemy.Damaged(damageEvent);
         gameObject.SetActive(false);
+    }
+
+    public void Init(WeaponStats weaponStats, AIBehavior owner)
+    {
+        _weaponStats = weaponStats;
+        _owner = owner;
     }
 }

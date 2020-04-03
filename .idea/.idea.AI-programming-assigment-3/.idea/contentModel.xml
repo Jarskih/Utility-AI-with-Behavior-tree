@@ -25,25 +25,29 @@
                 <e p="Selector.cs" t="Include" />
                 <e p="Sequence.cs" t="Include" />
                 <e p="SubTree.cs" t="Include" />
-              </e>
-              <e p="Editor" t="Include">
-                <e p="BehaviorTreeNodeGUI.cs" t="Include" />
+                <e p="UtilityNode.cs" t="Include" />
+                <e p="UtilitySelector.cs" t="Include" />
               </e>
               <e p="Graph" t="Include">
                 <e p="BehaviorTreeGraph.cs" t="Include" />
                 <e p="BehaviorTreeNode.cs" t="Include" />
               </e>
               <e p="Leafs" t="Include">
+                <e p="Block.cs" t="Include" />
+                <e p="Damaged.cs" t="Include" />
                 <e p="FindPath.cs" t="Include" />
                 <e p="HasNode.cs" t="Include" />
+                <e p="Heal.cs" t="Include" />
                 <e p="IsNode.cs" t="Include" />
                 <e p="RangedAttack.cs" t="Include" />
                 <e p="SetAttack.cs" t="Include" />
                 <e p="SetAttackType.cs" t="Include" />
+                <e p="SetBool.cs" t="Include" />
                 <e p="SetDeadState.cs" t="Include" />
                 <e p="SetMoveState.cs" t="Include" />
                 <e p="SetSpeed.cs" t="Include" />
                 <e p="SetTrigger.cs" t="Include" />
+                <e p="Taunt.cs" t="Include" />
                 <e p="TurnTo.cs" t="Include" />
                 <e p="Wait.cs" t="Include" />
               </e>
@@ -52,29 +56,46 @@
                 <e p="RuntimeBehaviourTreeData.cs" t="Include" />
               </e>
             </e>
+            <e p="Events" t="Include">
+              <e p="AIEventData.cs" t="Include" />
+              <e p="AIEventSystem.cs" t="Include" />
+              <e p="EventDefinitions.cs" t="Include" />
+            </e>
             <e p="Sense.cs" t="Include" />
             <e p="Stats.cs" t="Include" />
+            <e p="UtilityFunctions.cs" t="Include" />
+          </e>
+          <e p="Animator" t="Include">
+            <e p="AnimWeaponCollider.cs" t="Include" />
+            <e p="ChangeBool.cs" t="Include" />
+            <e p="ShootArrow.cs" t="Include" />
           </e>
           <e p="Audio" t="Include">
             <e p="AudioSourcePool.cs" t="Include" />
             <e p="AudioSourcePoolManager.cs" t="Include" />
             <e p="PollingPool.cs" t="Include" />
           </e>
+          <e p="BloodParticles.cs" t="Include" />
           <e p="DamageEvent.cs" t="Include" />
           <e p="EntityManager.cs" t="Include" />
+          <e p="EventManager.cs" t="Include" />
           <e p="Interfaces" t="Include">
             <e p="IDamageable.cs" t="Include" />
             <e p="IEventSource.cs" t="Include" />
+            <e p="IHealable.cs" t="Include" />
           </e>
           <e p="Main.cs" t="Include" />
+          <e p="MonsterSpawner.cs" t="Include" />
           <e p="Projectile.cs" t="Include" />
           <e p="ProjectileSpawn.cs" t="Include" />
           <e p="ScriptableObjects" t="Include">
             <e p="Actions" t="Include">
               <e p="PlaySound.cs" t="Include" />
             </e>
+            <e p="AIStimData.cs" t="Include" />
             <e p="AudioEvent.cs" t="Include" />
             <e p="ScriptableAction.cs" t="Include" />
+            <e p="UnitStats.cs" t="Include" />
             <e p="WeaponStats.cs" t="Include" />
           </e>
           <e p="SimpleCameraController.cs" t="Include" />
@@ -82,51 +103,19 @@
           <e p="WeaponColliderHolder.cs" t="Include" />
         </e>
         <e p="Vendor" t="Include">
-          <e p="xNode" t="Include">
-            <e p="Examples" t="Include">
-              <e p="MathGraph" t="Include">
-                <e p="Editor" t="Include">
-                  <e p="MathGraphEditor.cs" t="Include" />
+          <e p="Blood decal pack" t="Include">
+            <e p="readme.txt" t="Include" />
+          </e>
+          <e p="Samples" t="Include">
+            <e p="Terrain Tools" t="Include">
+              <e p="0.1.0-preview" t="Include">
+                <e p="Terrain Assets" t="Include">
+                  <e p="ThirdPartyNotices.txt" t="Include" />
                 </e>
-                <e p="MathGraph.cs" t="Include" />
-                <e p="Nodes" t="Include">
-                  <e p="DisplayValue.cs" t="Include" />
-                  <e p="Editor" t="Include">
-                    <e p="DisplayValueEditor.cs" t="Include" />
-                  </e>
-                  <e p="MathNode.cs" t="Include" />
-                  <e p="Vector.cs" t="Include" />
-                </e>
-              </e>
-              <e p="RuntimeMathGraph" t="Include">
-                <e p="Scripts" t="Include">
-                  <e p="Connection.cs" t="Include" />
-                  <e p="NodeDrag.cs" t="Include" />
-                  <e p="RuntimeMathGraph.cs" t="Include" />
-                  <e p="RuntimeNodes" t="Include">
-                    <e p="UGUIDisplayValue.cs" t="Include" />
-                    <e p="UGUIMathBaseNode.cs" t="Include" />
-                    <e p="UGUIMathNode.cs" t="Include" />
-                    <e p="UGUIVector.cs" t="Include" />
-                  </e>
-                  <e p="UGUIContextMenu.cs" t="Include" />
-                  <e p="UGUIPort.cs" t="Include" />
-                  <e p="UGUITooltip.cs" t="Include" />
-                </e>
-              </e>
-              <e p="StateMachine" t="Include">
-                <e p="Editor" t="Include">
-                  <e p="StateGraphEditor.cs" t="Include" />
-                </e>
-                <e p="Nodes" t="Include">
-                  <e p="Editor" t="Include">
-                    <e p="StateNodeEditor.cs" t="Include" />
-                  </e>
-                  <e p="StateNode.cs" t="Include" />
-                </e>
-                <e p="StateGraph.cs" t="Include" />
               </e>
             </e>
+          </e>
+          <e p="xNode" t="Include">
             <e p="Scripts" t="Include">
               <e p="Attributes" t="Include">
                 <e p="NodeEnum.cs" t="Include" />

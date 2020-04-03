@@ -18,7 +18,7 @@ public class TurnTo : BehaviorTreeNode
                 target = agent.Owner.blackboard.friendlyTarget?.transform;
                 break;
             case TurnTarget.Forward:
-                agent.Owner.GetComponentInChildren<Animator>().transform.rotation = Quaternion.identity;
+                agent.Owner.GetComponentInChildren<Animator>().transform.localRotation = Quaternion.identity;
                 result = BehaviorTreeResult.Success;
                 break;
         }

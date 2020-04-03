@@ -23,10 +23,6 @@ public class WeaponColliderHolder : MonoBehaviour
         _collider.enabled = true;
     }
 
-    public void DisableCollider()
-    {
-        _collider.enabled = false;
-    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -36,7 +32,8 @@ public class WeaponColliderHolder : MonoBehaviour
         {
             if ((AIBehavior) _source == damageable) return;
             
-            damageEvent?.Invoke(_source, damageable);  
+            damageEvent?.Invoke(_source, damageable);
+            _collider.enabled = false;
         }
     }
 }

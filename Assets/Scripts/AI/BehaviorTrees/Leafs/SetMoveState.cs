@@ -10,14 +10,18 @@ public class SetMoveState : BehaviorTreeNode
     public override BehaviorTreeResult Execute()
     {
         agent.animatorController.SetInteger(AnimDefinitions.MovementState, (int)desiredMoveState);
-        if (!agent.animatorController.applyRootMotion)
+        agent.navAgent.speed = overrideSpeed ? moveSpeed : agent.Owner.stats.moveSpeed;
+
+        if (agent.navAgent.speed > 0)
         {
-            agent.navAgent.speed = overrideSpeed ? moveSpeed : agent.Owner.stats.moveSpeed;
+            return BehaviorTreeResult.Success;
         }
-        else
+
+        if (agent.navAgent.hasPath)
         {
-            agent.navAgent.speed = 0;
+            agent.navAgent.ResetPath();
         }
+
         return BehaviorTreeResult.Success;
     }
 }

@@ -11,6 +11,9 @@ namespace BehaviorTrees
         public static string AttackType = "AttackType";
         public static string MovementState = "MoveState";
         public static string Damaged = "Damaged";
+        public static string ShoudBlock = "Block";
+        public static string ShouldHeal = "Heal";
+        public static string ShouldTaunt = "Taunt";
     }
     
     public enum MovementState
@@ -57,14 +60,15 @@ namespace BehaviorTrees
         PathToFriendlyTarget,
         FriendlyTarget,
         EnemyTarget,
-        PathToEnemyTarget
+        PathToEnemyTarget,
+        EnemiesNear
     }
 
     public enum IsOp
     {
         Healthy,
         Wounded,
-        Routing,
+        LowMorale,
         InAttackRange,
         Dead
         

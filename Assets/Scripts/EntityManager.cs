@@ -14,6 +14,13 @@
             }
         }
 
+        public void AddEntity(AIBehavior entity)
+        {
+            if(_behaviors.Contains(entity)) return;
+            
+            _behaviors.Add(entity);
+        }
+
         public List<AIBehavior> GetFriendlyEntities(int player)
         {
             List<AIBehavior> entities = new List<AIBehavior>();
@@ -46,5 +53,10 @@
                 }
             }
             return entities;
+        }
+
+        public List<AIBehavior> GetAllEntities()
+        {
+           return _behaviors;
         }
     }

@@ -16,12 +16,6 @@ public class FindPath : BehaviorTreeNode
     {
         switch (pathType)
         {
-            case PathType.Target:
-                if (agent.Owner.currentTarget != null && !agent.navAgent.pathPending && agent.navAgent.enabled)
-                {
-                    SetDestinationNearTarget(agent.Owner.currentTarget.GetPosition());
-                }
-                break;
             case PathType.Random:
                 if (!agent.navAgent.pathPending && agent.navAgent.enabled)
                 {
@@ -58,20 +52,29 @@ public class FindPath : BehaviorTreeNode
     private Vector3 retreatTarget;
     private Vector3 GetRetreatPos(BehaviorTreeAgent agent)
     {
-        // Find position behind friendly unit
-        var enemyPos = agent.Owner.blackboard.enemyTarget.GetPosition();
-        var pos = agent.Owner.transform.position;
-       // var friendlyPos = agent.Owner.blackboard.friendlyTarget.GetPosition();
+        var blackboard = agent.Owner.blackboard;
         
-        // Retreat away from enemy
-        retreatTarget = (pos - enemyPos).normalized * Random.Range(minWanderDistance,maxWanderDistance) + pos;
-        return retreatTarget;
-    }
+        var enemyTarget = blackboard.enemyTarget;
+        if (enemyTarget == null)
+        {
+            return agent.Owner.transform.position;
+        }
+        // Find position behind friendly unit
+        var enemyPos = blackboard.enemyTarget.GetPosition();
+        var pos = agent.Owner.transform.position;
+        var friendlyPos = blackboard.friendlyTarget;
 
-    void OnDrawGizmos()
-    {
-        Gizmos.color = Color.blue;
-        Gizmos.DrawWireCube(retreatTarget, Vector3.one);
+        if (friendlyPos)
+        {
+            retreatTarget = (pos - enemyPos).normalized + (friendlyPos.GetPosition() - pos).normalized * Random.Range(minWanderDistance,maxWanderDistance) + pos;
+        }
+        else
+        {
+            retreatTarget = (pos - enemyPos).normalized * Random.Range(minWanderDistance,maxWanderDistance) + pos;
+        }
+        
+        agent.Owner.retreatTarget = retreatTarget;
+        return retreatTarget;
     }
 
     private void SetRandomDestination(NavMeshAgent agent)

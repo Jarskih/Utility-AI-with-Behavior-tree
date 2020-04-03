@@ -7,32 +7,37 @@
         [Serializable]
         public class Sense
         {
+            // List of all detected entities
             public List<AIBehavior> units => _units;
+            public float sensingDistance => _unitStats.sensingDistance;
             private List<AIBehavior> _units = new List<AIBehavior>();
             private Transform _transform;
-            private float _sensingDistance = 50;
+            private EntityManager _entityManager;
+            private UnitStats _unitStats;
 
-            public void Init(Transform transform)
+            public void Init(Transform transform, EntityManager entityManager, UnitStats unitStats)
             {
                 _transform = transform;
+                _entityManager = entityManager;
+                _unitStats = unitStats;
             }
             public void Tick()
             {
-                DetectEnemies();
+                DetectEntities();
             }
 
-            private void DetectEnemies()
+            private void DetectEntities()
             {
-                // TODO use entity manager
-                var enemies = GameObject.FindGameObjectsWithTag("Unit");
-                foreach (var enemy in enemies)
+                var entities = _entityManager.GetAllEntities();
+
+                foreach (var entity in entities)
                 {
-                    if (Vector3.Distance(_transform.position, enemy.transform.position) > _sensingDistance)
+                    if (Vector3.Distance(_transform.position, entity.transform.position) > _unitStats.sensingDistance)
                     {
                         continue;
                     }
                     
-                    var ai = enemy.GetComponent<AIBehavior>();
+                    var ai = entity.GetComponent<AIBehavior>();
                     if (ai.IsActive())
                     {
                         AddVisibleUnit(ai);

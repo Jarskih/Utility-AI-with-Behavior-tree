@@ -1,0 +1,268 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8197105288151249901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0660ce25f2a74077bd3ec63c17660969, type: 3}
+  m_Name: Set Bool
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -616, y: -8}
+  ports:
+    keys:
+    - outResult
+    values:
+    - _fieldName: outResult
+      _node: {fileID: -8197105288151249901}
+      _typeQualifiedName: BehaviorTrees.BehaviorTreeResult, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: inResults
+        node: {fileID: -4138273291386074958}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  outResult: 0
+  agent:
+    animatorController: {fileID: 0}
+  nodeDescription: 
+  boolName: Block
+  value: 1
+--- !u!114 &-5051249896341583335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b0021e469784cb7973e45ca6a2bc2f3, type: 3}
+  m_Name: Wait
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -616, y: 344}
+  ports:
+    keys:
+    - outResult
+    values:
+    - _fieldName: outResult
+      _node: {fileID: -5051249896341583335}
+      _typeQualifiedName: BehaviorTrees.BehaviorTreeResult, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: inResults
+        node: {fileID: -4138273291386074958}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  outResult: 0
+  agent:
+    animatorController: {fileID: 0}
+  nodeDescription: 
+  seconds: 3
+--- !u!114 &-4138273291386074958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e47e69bbcd112b43b8f7a151862583a, type: 3}
+  m_Name: Sequence
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -296, y: -8}
+  ports:
+    keys:
+    - inResults
+    - outResult
+    values:
+    - _fieldName: inResults
+      _node: {fileID: -4138273291386074958}
+      _typeQualifiedName: System.Collections.Generic.List`1[[BehaviorTrees.BehaviorTreeResult,
+        Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
+        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: outResult
+        node: {fileID: -8197105288151249901}
+        reroutePoints: []
+      - fieldName: outResult
+        node: {fileID: -5051249896341583335}
+        reroutePoints: []
+      - fieldName: outResult
+        node: {fileID: 969426656948679068}
+        reroutePoints: []
+      - fieldName: outResult
+        node: {fileID: 3739951237539152099}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: outResult
+      _node: {fileID: -4138273291386074958}
+      _typeQualifiedName: BehaviorTrees.BehaviorTreeResult, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: inResult
+        node: {fileID: 4923323628471351973}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  outResult: 0
+  agent:
+    animatorController: {fileID: 0}
+  nodeDescription: 
+  inResults: 
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2b00d7fb518e1549a18dd47a7d288d9, type: 3}
+  m_Name: Block
+  m_EditorClassIdentifier: 
+  nodes:
+  - {fileID: 4923323628471351973}
+  - {fileID: -4138273291386074958}
+  - {fileID: -5051249896341583335}
+  - {fileID: -8197105288151249901}
+  - {fileID: 969426656948679068}
+  - {fileID: 3739951237539152099}
+--- !u!114 &969426656948679068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6dd6295a22e4087b64c48a39dcae11b, type: 3}
+  m_Name: Set Move State
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -616, y: 152}
+  ports:
+    keys:
+    - outResult
+    values:
+    - _fieldName: outResult
+      _node: {fileID: 969426656948679068}
+      _typeQualifiedName: BehaviorTrees.BehaviorTreeResult, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: inResults
+        node: {fileID: -4138273291386074958}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  outResult: 0
+  agent:
+    animatorController: {fileID: 0}
+  nodeDescription: 
+  desiredMoveState: 0
+  moveSpeed: 0
+  overrideSpeed: 0
+--- !u!114 &3739951237539152099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0660ce25f2a74077bd3ec63c17660969, type: 3}
+  m_Name: Set Bool
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -616, y: 488}
+  ports:
+    keys:
+    - outResult
+    values:
+    - _fieldName: outResult
+      _node: {fileID: 3739951237539152099}
+      _typeQualifiedName: BehaviorTrees.BehaviorTreeResult, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: inResults
+        node: {fileID: -4138273291386074958}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  outResult: 0
+  agent:
+    animatorController: {fileID: 0}
+  nodeDescription: 
+  boolName: Block
+  value: 0
+--- !u!114 &4923323628471351973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c51cd9c309e24610a835aeed837039e0, type: 3}
+  m_Name: Root
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 5, y: 1}
+  ports:
+    keys:
+    - inResult
+    - outResult
+    values:
+    - _fieldName: inResult
+      _node: {fileID: 4923323628471351973}
+      _typeQualifiedName: BehaviorTreeNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: outResult
+        node: {fileID: -4138273291386074958}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: outResult
+      _node: {fileID: 4923323628471351973}
+      _typeQualifiedName: BehaviorTrees.BehaviorTreeResult, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  outResult: 0
+  agent:
+    animatorController: {fileID: 0}
+  nodeDescription: 
+  inResult: {fileID: 0}

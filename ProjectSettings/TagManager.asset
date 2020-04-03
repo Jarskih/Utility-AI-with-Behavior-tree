@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Unit
+  - Floor
   layers:
   - Default
   - TransparentFX
@@ -16,8 +17,8 @@ TagManager:
   - 
   - Heroes
   - Monsters
-  - 
-  - 
+  - PostProcessing
+  - Floor
   - 
   - 
   - 

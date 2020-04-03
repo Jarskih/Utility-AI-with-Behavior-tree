@@ -51,13 +51,16 @@ using UnityEngine;
                     {
                         result = BehaviorTreeResult.Failure;
                     }
-                    else if (agent.navAgent.hasPath && PathIsWithinToleranceToTarget(agent.Owner.blackboard.enemyTarget.transform))
+                    else if (agent.navAgent.hasPath && PathIsWithinToleranceToTarget(agent.Owner.blackboard.enemyTarget?.transform))
                     {
                         result = BehaviorTreeResult.Success;
                     }
                     else
                     {
-                        agent.navAgent.ResetPath();
+                        if (agent.navAgent.hasPath)
+                        {
+                            agent.navAgent.ResetPath();
+                        }
                         result = BehaviorTreeResult.Failure;
                     }
                     break;

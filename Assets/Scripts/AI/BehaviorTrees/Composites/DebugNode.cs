@@ -12,6 +12,6 @@ public class DebugNode : BehaviorTreeNode
     {
         Debug.Log(state);
         Debug.Log(agent.Owner);
-        return inResult;
+        return GetInputValue("inResult", BehaviorTreeResult.Success);
     }
 }
