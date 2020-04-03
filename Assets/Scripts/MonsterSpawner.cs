@@ -15,7 +15,7 @@
         private FloatVariable _timerUI;
         private int _monstersLeft = 15;
         private float _cooldown = 5f;
-        private float _timer = 0f;
+        private float _timer = 5f;
         public void Init(GameObject prefab, AIEventSystem eventSystem, EntityManager entityManager)
         {
             _cam = Camera.main;

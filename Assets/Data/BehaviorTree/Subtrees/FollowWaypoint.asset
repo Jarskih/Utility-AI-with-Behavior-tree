@@ -224,7 +224,6 @@ MonoBehaviour:
   nodeDescription: 
   desiredMoveState: 0
   moveSpeed: 0
-  overrideSpeed: 1
 --- !u!114 &-1312223056428709512
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -421,8 +420,7 @@ MonoBehaviour:
     animatorController: {fileID: 0}
   nodeDescription: 
   desiredMoveState: 1
-  moveSpeed: 2
-  overrideSpeed: 1
+  moveSpeed: 3
 --- !u!114 &8550284371925223472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -458,4 +456,4 @@ MonoBehaviour:
     animatorController: {fileID: 0}
   nodeDescription: 
   operation: 1
-  destinationTolerance: 2
+  destinationTolerance: 1

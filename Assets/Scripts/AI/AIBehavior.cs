@@ -57,6 +57,7 @@ namespace AI
         
         private WaitForSeconds waitFor = new WaitForSeconds(0.2f);
         private UtilityFunctions.Decisions _currentDecision;
+        public Waypoint currentWaypoint => _currentWaypoint;
         private Waypoint _currentWaypoint;
         private bool _init;
         private bool hasDied;
