@@ -178,7 +178,8 @@ MonoBehaviour:
       connections:
       - fieldName: inResults
         node: {fileID: 1656907569347278754}
-        reroutePoints: []
+        reroutePoints:
+        - {x: -341.38318, y: 750.7666}
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -366,7 +367,9 @@ MonoBehaviour:
       connections:
       - fieldName: inResults
         node: {fileID: 1656907569347278754}
-        reroutePoints: []
+        reroutePoints:
+        - {x: -289.38318, y: 1281.7666}
+        - {x: -314.38318, y: 639.7666}
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -495,7 +498,7 @@ MonoBehaviour:
   m_Name: Sub Tree
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -328, y: 1512}
+  position: {x: -296, y: 1448}
   ports:
     keys:
     - outResult
@@ -530,7 +533,7 @@ MonoBehaviour:
   m_Name: Root
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 872, y: 168}
+  position: {x: 824, y: 168}
   ports:
     keys:
     - inResult
@@ -575,7 +578,7 @@ MonoBehaviour:
   m_Name: Selector
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 600, y: 168}
+  position: {x: 552, y: 168}
   ports:
     keys:
     - inResults
@@ -685,7 +688,7 @@ MonoBehaviour:
   m_Name: Sub Tree
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -312, y: 1720}
+  position: {x: -280, y: 1656}
   ports:
     keys:
     - outResult

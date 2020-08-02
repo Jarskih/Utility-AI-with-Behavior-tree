@@ -80,6 +80,7 @@
           <e p="DamageEvent.cs" t="Include" />
           <e p="EntityManager.cs" t="Include" />
           <e p="EventManager.cs" t="Include" />
+          <e p="Exit.cs" t="Include" />
           <e p="Interfaces" t="Include">
             <e p="IDamageable.cs" t="Include" />
             <e p="IEventSource.cs" t="Include" />
